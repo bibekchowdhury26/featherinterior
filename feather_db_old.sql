@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 25, 2021 at 03:43 PM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.7
+-- Generation Time: Jul 17, 2021 at 03:39 PM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 7.3.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -186,49 +186,14 @@ CREATE TABLE `teams` (
 
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
-  `email_id` varchar(255) NOT NULL,
-  `name` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
   `phone` varchar(255) NOT NULL,
   `city` varchar(255) NOT NULL,
   `state` varchar(255) NOT NULL,
   `country` varchar(255) NOT NULL,
   `address` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `user`
---
-
-INSERT INTO `user` (`id`, `email_id`, `name`, `phone`, `city`, `state`, `country`, `address`) VALUES
-(1, 'test@gmail.com', 'user1', '', '', '', '', ''),
-(2, 'test2@gmail.com', 'user2', '', '', '', '', ''),
-(3, 'admin@test.com', 'admin', '', '', '', '', ''),
-(4, 'test@gg.com', 'Arpan', '', '', '', '', ''),
-(5, 'amit@gmail.com', 'Amit', '', '', '', '', '');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user_registration`
---
-
-CREATE TABLE `user_registration` (
-  `id` int(11) NOT NULL,
-  `email_id` varchar(100) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `password` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `user_registration`
---
-
-INSERT INTO `user_registration` (`id`, `email_id`, `name`, `password`) VALUES
-(1, 'test@gmail.com', 'user1', '123'),
-(2, 'test2@gmail.com', 'user2', '123'),
-(3, 'admin@test.com', 'admin', 'admin'),
-(4, 'test@gg.com', 'Arpan', '123'),
-(5, 'amit@gmail.com', 'Amit', '123');
 
 --
 -- Indexes for dumped tables
@@ -290,12 +255,6 @@ ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user_registration`
---
-ALTER TABLE `user_registration`
-  ADD PRIMARY KEY (`id`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -351,13 +310,7 @@ ALTER TABLE `teams`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `user_registration`
---
-ALTER TABLE `user_registration`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
