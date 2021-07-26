@@ -33,9 +33,8 @@ class User extends CI_Controller
         if ($q) {
             $_SESSION['email_id'] = $q;
             $_SESSION['userLog'] = true;
-            $this->load->view('userUi/getEstimate');
+            header('location:' . site_url('Welcome/index'));
         } else {
-            echo '<script>alert("Something went wrong! Please try again later")</script>';
             header('location:' . site_url('Welcome/index'));
         }
     }
@@ -50,9 +49,8 @@ class User extends CI_Controller
         if ($q) {
             $_SESSION['email_id'] = $q;
             $_SESSION['userLog'] = true;
-            $this->load->view('userUi/getEstimate');
+            header('location:' . site_url('Welcome/index'));
         } else {
-            echo '<script>alert("wrong Information! Please check your details")</script>';
             header('location:' . site_url('Welcome/index'));
         }
     }
