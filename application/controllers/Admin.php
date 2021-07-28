@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Admin extends CI_Controller {
+class Admin extends CI_Controller
+{
 
 	/**
 	 * Index Page for this controller.
@@ -22,40 +23,80 @@ class Admin extends CI_Controller {
 	{
 		$this->load->view('admin/login');
 	}
-	public function login(){
-		if($this->input->post()){
-			
+	public function login()
+	{
+		if ($this->input->post()) {
+
 			$data = array(
-				'username'=>$this->input->post('username'),
-				'password'=>$this->input->post('password'),
+				'username' => $this->input->post('username'),
+				'password' => $this->input->post('password'),
 			);
 			$confirm = $this->db->where($data)
-								->get('admin')
-								->result_array();
+				->get('admin')
+				->result_array();
 
-			if($confirm != null){
+			if ($confirm != null) {
 				// echo 'loged in';
 				// die;
-				
+
 				$_SESSION['admin'] = $confirm[0]['username'];
-				header('location:'.site_url('Admin/home'));
-			}else{
+				header('location:' . site_url('Admin/home'));
+			} else {
 				// echo 'error';
 				// die;
-				header('location:'.site_url('Admin'));
+				header('location:' . site_url('Admin'));
 			}
 		}
 	}
-	public function home(){
-		if(isset($_SESSION['admin'])){
+	public function home()
+	{
+		if (isset($_SESSION['admin'])) {
 			$data['bookings'] = $this->db->get('contact_details')->result_array();
-			$this->load->view('admin/dashboard',$data);
-		}else{
-			header('location:'.site_url('Admin'));
+			$this->load->view('admin/dashboard', $data);
+		} else {
+			header('location:' . site_url('Admin'));
 		}
 	}
-	public function logout(){
+	public function logout()
+	{
 		unset($_SESSION['admin']);
-		header('location:'.site_url('Admin'));
+		header('location:' . site_url('Admin'));
+	}
+	public function services()
+	{
+		$layout = 0;
+		// layout = 0 -->view page
+		// layout = 1 -->add page
+		// layout = 2 -->edit page
+
+		if (isset($_SESSION['admin'])) {
+			$this->load->model('Services');
+			$services = $this->Services->allService();
+			// echo '<pre>';
+			// print_R($services);
+			// die;
+			$data['services'] = $services;
+
+			$data['layout'] = $layout;
+			$this->load->view('Admin/services', $data);
+		} else {
+			header('location:' . site_url('Admin'));
+		}
+	}
+	public function teams()
+	{
+		if (isset($_SESSION['admin'])) {
+			$this->load->view('Admin/teams');
+		} else {
+			header('location:' . site_url('Admin'));
+		}
+	}
+	public function vendors()
+	{
+		if (isset($_SESSION['admin'])) {
+			$this->load->view('Admin/vendors');
+		} else {
+			header('location:' . site_url('Admin'));
+		}
 	}
 }
