@@ -97,18 +97,16 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    <div class="row" style="margin-bottom: 10px;">
-                        <div class="col-sm-4 col-3">
-                            <h4 class="h3 mb-2 text-gray-800">Services</h4>
-                        </div>
-                        <div class="col-sm-8 col-9 text-right m-b-20">
-                            <a href="<?php echo site_url('Admin/addservices') ?>" class="btn btn btn-primary btn-rounded float-right"><i class="fa fa-plus"></i> Add Services</a>
-                        </div>
-                    </div>
-
-
-
                     <?php if ($layout == 0) : ?>
+                        <!-- View Page-->
+                        <div class="row" style="margin-bottom: 10px;">
+                            <div class="col-sm-4 col-3">
+                                <h4 class="h3 mb-2 text-gray-800">Services</h4>
+                            </div>
+                            <div class="col-sm-8 col-9 text-right m-b-20">
+                                <a href="<?php echo site_url('Admin/addservices') ?>" class="btn btn btn-primary btn-rounded float-right"><i class="fa fa-plus"></i> Add Services</a>
+                            </div>
+                        </div>
                         <div class="card shadow mb-4">
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -134,16 +132,94 @@
                                         <tbody>
                                             <?php foreach ($services as $x) : ?>
                                                 <tr>
-                                                    <td><?php echo $x['service_id'] ?></td>
-                                                    <td><?php echo $x['service_name'] ?></td>
+                                                    <td class="text-center" style="vertical-align: middle;"><?php echo $x['service_id'] ?></td>
+                                                    <td class="text-center" style="vertical-align: middle;"><?php echo $x['service_name'] ?></td>
                                                     <td><?php echo $x['service_desc'] ?></td>
-                                                    <td><a class="btn btn-primary btn-rounded" href="<?php echo site_url('Admin/editservices/' . $x['id']) ?>"><i class="fas fa-pencil-alt m-r-5"></i></a></td>
-                                                    <td><a class="btn btn-danger btn-rounded" href="<?php echo site_url('Admin/delservices/' . $x['id']) ?>" onclick="return confirm('Are you sure, you want to delete it?')"><i class="fas fa-trash m-r-5"></i></a></td>
+                                                    <td class="text-center" style="vertical-align: middle;"><a class="btn btn-primary btn-rounded" href="<?php echo site_url('Admin/editservices/' . $x['id']) ?>"><i class="fas fa-pencil-alt m-r-5"></i></a></td>
+                                                    <td class="text-center" style="vertical-align: middle;"><a class="btn btn-danger btn-rounded" href="<?php echo site_url('Admin/delservices/' . $x['id']) ?>" onclick="return confirm('Are you sure, you want to delete it?')"><i class="fas fa-trash m-r-5"></i></a></td>
                                                 </tr>
                                             <?php endforeach; ?>
                                         </tbody>
                                     </table>
                                 </div>
+                            </div>
+                        </div>
+                    <?php elseif ($layout == 1) : ?>
+                        <!-- Add Page-->
+                        <div class="row">
+                            <div class="col-lg-8 offset-lg-2 pt-5">
+                                <h4 class="page-title">Add Service</h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-8 offset-lg-2 pt-3">
+                                <form method="post" action="<?php echo site_url('Admin/addservices') ?>">
+                                    <div class="row">
+                                        <div class="col-md-6 pt-2">
+                                            <div class="form-group">
+                                                <label>Service ID</label>
+                                                <input class="form-control" type="text" name="service_id" value="<?php echo uniqid('SRV'); ?>" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 pt-2">
+                                            <div class="form-group">
+                                                <label>Name: <span class="text-danger">*</span></label>
+                                                <input class="form-control" name="service_name" style="text-transform: uppercase;" type="text" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label>Description: <span class="text-danger">*</span></label>
+                                                <textarea name="service_desc" class="form-control" rows="4" required></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="m-t-20 text-center">
+                                        <button type="submit" class="btn btn-primary submit-btn">Add Service</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    <?php elseif ($layout == 2) : ?>
+                        <!-- Edit Page-->
+                        <div class="row">
+                            <div class="col-lg-8 offset-lg-2 pt-5">
+                                <h4 class="page-title">Edit Service</h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-8 offset-lg-2 pt-3">
+                                <form method="post" action="<?php echo site_url('Admin/editservices') ?>">
+                                    <div class="row">
+                                        <div class="col-md-6 pt-2">
+                                            <div class="form-group">
+                                                <label>Service ID</label>
+                                                <input class="form-control" type="text" name="service_id" value="<?php echo $service[0]['service_id']; ?>" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 pt-2">
+                                            <div class="form-group">
+                                                <label>Name: <span class="text-danger">*</span></label>
+                                                <input class="form-control" name="service_name" type="text" value="<?php echo $service[0]['service_name']; ?>" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label>Description: <span class="text-danger">*</span></label>
+                                                <textarea name="service_desc" class="form-control" rows="4" required><?php echo $service[0]['service_desc']; ?></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 pt-2" style="display: none;">
+                                        <div class="form-group">
+                                            <label>ID: <span class="text-danger"></span></label>
+                                            <input class="form-control" name="id" type="text" value="<?php echo $service[0]['id']; ?>" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="m-t-20 text-center">
+                                        <button type="submit" class="btn btn-primary submit-btn">Update Service</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     <?php endif; ?>
@@ -165,29 +241,9 @@
     </div>
     <!-- End of Page Wrapper -->
 
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- Logout Modal with Scroll to Top Button -->
+    <?php include("logout.php"); ?>
+    <!-- End Logout Modal with Scroll to Top Button -->
 
     <!-- Bootstrap core JavaScript-->
     <script src="<?php echo base_url() ?>vendor/jquery/jquery.min.js"></script>
