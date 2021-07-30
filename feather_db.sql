@@ -3,11 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
-
--- Generation Time: Jul 23, 2021 at 10:01 PM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 7.3.27
-
+-- Generation Time: Jul 28, 2021 at 04:50 AM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 8.0.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -164,6 +162,14 @@ CREATE TABLE `services` (
   `service_desc` mediumtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `services`
+--
+
+INSERT INTO `services` (`id`, `service_id`, `service_name`, `service_desc`) VALUES
+(1, '122455445', 'demo', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'),
+(2, '3164494626', 'demo2', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English.');
+
 -- --------------------------------------------------------
 
 --
@@ -173,6 +179,7 @@ CREATE TABLE `services` (
 CREATE TABLE `teams` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
+  `pro_pic` varchar(255) NOT NULL,
   `qualification` varchar(255) NOT NULL,
   `facebook_link` varchar(255) NOT NULL,
   `instagram_link` varchar(255) NOT NULL,
@@ -195,19 +202,6 @@ CREATE TABLE `user` (
   `state` varchar(255) NOT NULL,
   `country` varchar(255) NOT NULL,
   `address` varchar(1000) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `vendors`
---
-
-CREATE TABLE `vendors` (
-  `id` int(11) NOT NULL,
-  `vendor_name` varchar(255) NOT NULL,
-  `vendor_logo` varchar(255) NOT NULL,
-  `description` longtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -244,6 +238,19 @@ INSERT INTO `user_registration` (`id`, `email_id`, `name`, `password`) VALUES
 (3, 'admin@test.com', 'admin', 'admin'),
 (4, 'test@gg.com', 'Arpan', '123'),
 (5, 'amit@gmail.com', 'Amit', '123');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vendors`
+--
+
+CREATE TABLE `vendors` (
+  `id` int(11) NOT NULL,
+  `vendor_name` varchar(255) NOT NULL,
+  `vendor_logo` varchar(255) NOT NULL,
+  `description` longtext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
@@ -305,15 +312,9 @@ ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
-
--- Indexes for table `user_registration`
---
-ALTER TABLE `user_registration`
-
 -- Indexes for table `vendors`
 --
 ALTER TABLE `vendors`
-
   ADD PRIMARY KEY (`id`);
 
 --
@@ -360,7 +361,7 @@ ALTER TABLE `gallery_images`
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `teams`
@@ -372,23 +373,13 @@ ALTER TABLE `teams`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `user_registration`
---
-ALTER TABLE `user_registration`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `vendors`
 --
 ALTER TABLE `vendors`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
