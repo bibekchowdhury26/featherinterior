@@ -4,7 +4,7 @@
 
 
         <div class="section-title">
-            <span>Home Interior Designs</span>
+            <span>Feather Interior Designs</span>
             <h2>Home Interior Designs</h2>
             <p>Find design ideas from our design gallery or book a meeting with dedicated design expert</p>
         </div>
@@ -19,43 +19,93 @@
             <div class="owl-carousel owl-theme">
                 <div class="item">
                     <div class="card mr-2 ml-2">
-                        <img src="<?php echo base_url() ?>UserAssets/img/portfolio/portfolio-1.jpg" alt=""
+                        <img src="<?php echo base_url() ?>UserAssets/img/design/wardrobe1.jpg" alt=""
                             class="card-img-top">
                     </div>
                 </div>
 
                 <div class="item">
                     <div class="card mr-2 ml-2">
-                        <img src="<?php echo base_url() ?>UserAssets/img/portfolio/portfolio-1.jpg" alt=""
+                        <img src="<?php echo base_url() ?>UserAssets/img/design/kitchen2.jpg" alt=""
                             class="card-img-top">
                     </div>
 
                 </div>
                 <div class="item">
                     <div class="card mr-2 ml-2">
-                        <img src="<?php echo base_url() ?>UserAssets/img/portfolio/portfolio-1.jpg" alt=""
+                        <img src="<?php echo base_url() ?>UserAssets/img/design/wardrobe3.jpg" alt=""
                             class="card-img-top">
                     </div>
 
                 </div>
                 <div class="item">
                     <div class="card mr-2 ml-2">
-                        <img src="<?php echo base_url() ?>UserAssets/img/portfolio/portfolio-1.jpg" alt=""
+                        <img src="<?php echo base_url() ?>UserAssets/img/design/home5.jpeg" alt="" class="card-img-top">
+                    </div>
+
+                </div>
+                <div class="item">
+                    <div class="card mr-2 ml-2">
+                        <img src="<?php echo base_url() ?>UserAssets/img/design/kitchen5.jpg" alt=""
                             class="card-img-top">
                     </div>
 
                 </div>
                 <div class="item">
                     <div class="card mr-2 ml-2">
-                        <img src="<?php echo base_url() ?>UserAssets/img/portfolio/portfolio-1.jpg" alt=""
-                            class="card-img-top">
+                        <img src="<?php echo base_url() ?>UserAssets/img/design/home2.jpeg" alt="" class="card-img-top">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid pr-2 pl-2 mb-3">
+            <br>
+            <h5 class="text-dark">Home Office
+                <!-- <i class="icofont-chart-line"></i> --> <span class="float-right" style="font-size:20px;"><a
+                        href="">See All
+                        <i class="icofont-arrow-right"></i></a></span>
+            </h5>
+            <br>
+            <div class="owl-carousel owl-theme">
+                <div class="item">
+                    <div class="card mr-2 ml-2">
+                        <img src="<?php echo base_url() ?>UserAssets/img/design/home1.jpeg" alt="" class="card-img-top">
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="card mr-2 ml-2">
+                        <img src="<?php echo base_url() ?>UserAssets/img/design/home2.jpeg" alt="" class="card-img-top">
                     </div>
 
                 </div>
                 <div class="item">
                     <div class="card mr-2 ml-2">
-                        <img src="<?php echo base_url() ?>UserAssets/img/portfolio/portfolio-1.jpg" alt=""
-                            class="card-img-top">
+                        <img src="<?php echo base_url() ?>UserAssets/img/design/home3.jpeg" alt="" class="card-img-top">
+                    </div>
+
+                </div>
+                <div class="item">
+                    <div class="card mr-2 ml-2">
+                        <img src="<?php echo base_url() ?>UserAssets/img/design/home4.jpeg" alt="" class="card-img-top">
+                    </div>
+
+                </div>
+                <div class="item">
+                    <div class="card mr-2 ml-2">
+                        <img src="<?php echo base_url() ?>UserAssets/img/design/home5.jpeg" alt="" class="card-img-top">
+                    </div>
+
+                </div>
+                <div class="item">
+                    <div class="card mr-2 ml-2">
+                        <img src="<?php echo base_url() ?>UserAssets/img/design/home6.jpeg" alt="" class="card-img-top">
+                    </div>
+
+                </div>
+                <div class="item">
+                    <div class="card mr-2 ml-2">
+                        <img src="<?php echo base_url() ?>UserAssets/img/design/home7.jpeg" alt="" class="card-img-top">
                     </div>
 
                 </div>
@@ -69,42 +119,48 @@
             <div class="owl-carousel owl-theme">
                 <div class="item">
                     <div class="card mr-2 ml-2">
-                        <img src="<?php echo base_url() ?>UserAssets/img/portfolio/portfolio-1.jpg" alt=""
+                        <img src="<?php echo base_url() ?>UserAssets/img/design/wardrobe1.jpg" alt=""
                             class="card-img-top">
                     </div>
                 </div>
-
                 <div class="item">
                     <div class="card mr-2 ml-2">
-                        <img src="<?php echo base_url() ?>UserAssets/img/portfolio/portfolio-1.jpg" alt=""
-                            class="card-img-top">
-                    </div>
-
-                </div>
-                <div class="item">
-                    <div class="card mr-2 ml-2">
-                        <img src="<?php echo base_url() ?>UserAssets/img/portfolio/portfolio-1.jpg" alt=""
+                        <img src="<?php echo base_url() ?>UserAssets/img/design/wardrobe2.jpg" alt=""
                             class="card-img-top">
                     </div>
 
                 </div>
                 <div class="item">
                     <div class="card mr-2 ml-2">
-                        <img src="<?php echo base_url() ?>UserAssets/img/portfolio/portfolio-1.jpg" alt=""
+                        <img src="<?php echo base_url() ?>UserAssets/img/design/wardrobe3.jpg" alt=""
                             class="card-img-top">
                     </div>
 
                 </div>
                 <div class="item">
                     <div class="card mr-2 ml-2">
-                        <img src="<?php echo base_url() ?>UserAssets/img/portfolio/portfolio-1.jpg" alt=""
+                        <img src="<?php echo base_url() ?>UserAssets/img/design/wardrobe4.jpg" alt=""
                             class="card-img-top">
                     </div>
 
                 </div>
                 <div class="item">
                     <div class="card mr-2 ml-2">
-                        <img src="<?php echo base_url() ?>UserAssets/img/portfolio/portfolio-1.jpg" alt=""
+                        <img src="<?php echo base_url() ?>UserAssets/img/design/wardrobe5.jpg" alt=""
+                            class="card-img-top">
+                    </div>
+
+                </div>
+                <div class="item">
+                    <div class="card mr-2 ml-2">
+                        <img src="<?php echo base_url() ?>UserAssets/img/design/wardrobe6.jpg" alt=""
+                            class="card-img-top">
+                    </div>
+
+                </div>
+                <div class="item">
+                    <div class="card mr-2 ml-2">
+                        <img src="<?php echo base_url() ?>UserAssets/img/design/wardrobe7.jpg" alt=""
                             class="card-img-top">
                     </div>
 
@@ -113,48 +169,48 @@
         </div>
         <div class="container-fluid pr-2 pl-2 mt-2 mb-3">
             <br>
-            <h5 class="text-dark">Bedroom Designs <span class="float-right" style="font-size:20px;"><a href="">See All
+            <h5 class="text-dark">Modular Kitchen <span class="float-right" style="font-size:20px;"><a href="">See All
                         <i class="icofont-arrow-right"></i></a></span></h5>
             <br>
             <div class="owl-carousel owl-theme">
                 <div class="item">
                     <div class="card mr-2 ml-2">
-                        <img src="<?php echo base_url() ?>UserAssets/img/portfolio/portfolio-1.jpg" alt=""
+                        <img src="<?php echo base_url() ?>UserAssets/img/design/kitchen1.jpg" alt=""
                             class="card-img-top">
                     </div>
                 </div>
 
                 <div class="item">
                     <div class="card mr-2 ml-2">
-                        <img src="<?php echo base_url() ?>UserAssets/img/portfolio/portfolio-1.jpg" alt=""
+                        <img src="<?php echo base_url() ?>UserAssets/img/design/kitchen2.jpg" alt=""
                             class="card-img-top">
                     </div>
 
                 </div>
                 <div class="item">
                     <div class="card mr-2 ml-2">
-                        <img src="<?php echo base_url() ?>UserAssets/img/portfolio/portfolio-1.jpg" alt=""
+                        <img src="<?php echo base_url() ?>UserAssets/img/design/kitchen3.jpg" alt=""
                             class="card-img-top">
                     </div>
 
                 </div>
                 <div class="item">
                     <div class="card mr-2 ml-2">
-                        <img src="<?php echo base_url() ?>UserAssets/img/portfolio/portfolio-1.jpg" alt=""
+                        <img src="<?php echo base_url() ?>UserAssets/img/design/kitchen4.jpg" alt=""
                             class="card-img-top">
                     </div>
 
                 </div>
                 <div class="item">
                     <div class="card mr-2 ml-2">
-                        <img src="<?php echo base_url() ?>UserAssets/img/portfolio/portfolio-1.jpg" alt=""
+                        <img src="<?php echo base_url() ?>UserAssets/img/design/kitchen5.jpg" alt=""
                             class="card-img-top">
                     </div>
 
                 </div>
                 <div class="item">
                     <div class="card mr-2 ml-2">
-                        <img src="<?php echo base_url() ?>UserAssets/img/portfolio/portfolio-1.jpg" alt=""
+                        <img src="<?php echo base_url() ?>UserAssets/img/design/kitchen6.jpg" alt=""
                             class="card-img-top">
                     </div>
 

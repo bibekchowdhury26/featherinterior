@@ -11,7 +11,7 @@
 
     <!-- Favicons -->
     <link href="<?php echo base_url() ?>UserAssets/img/favicon.png" rel="icon">
-    <link href="<?php echo base_url() ?>UserAssets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="<?php echo base_url() ?>UserAssets/img/favicon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link
@@ -52,7 +52,8 @@
             <a class="btn btn-gfe btn-gfe-mob mt-2 mx-auto py-auto mb-2 text-white" href="#">Get Free Estimate</a>
             <h1>Get personalised home interiors in <span class="text-danger">just 40 days</span></h1>
             <h2><strong class="text-danger">India's no.1</strong> Customized Interior Decorator team</h2>
-            <a href="#about" class="btn-get-started add-to-cart scrollto">Get Online Free Consultation</a>
+            <a data-toggle="modal" data-target="#consultation_form" class="btn-get-started">Get
+                Online Free Consultation</a>
         </div>
     </section><!-- End Hero -->
 
@@ -92,7 +93,7 @@
         <?php include('price.php') ?>
 
         <!-- ======= Team Section ======= -->
-        <?php include('team.php') ?>
+        <?php //include('team.php') ?>
 
         <!-- ======= Contact Section ======= -->
         <?php include('contact.php') ?>

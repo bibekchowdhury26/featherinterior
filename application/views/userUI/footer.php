@@ -74,9 +74,45 @@
 
     </div>
 </footer><!-- End Footer -->
-<a href="#" class="get-consult btn text-white text-uppercase">Get Online Free Consultation</a>
+<a data-toggle="modal" data-target="#consultation_form" class="get-consult btn text-white text-uppercase">Get Online
+    Free Consultation</a>
 <a href="#" class="btn-contact-form"><i class="icofont-ui-messaging"></i></a>
 <div id="preloader"></div>
+<div class="modal fade" id="consultation_form" tabindex="-1" role="dialog" aria-labelledby="consultation_formTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text=-danger" id="exampleModalLongTitle">Get Online Free Consultation</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="" method="post">
+                <div class="modal-body">
+
+                    <div class="from-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" name="name" id="name" class="form-control">
+                    </div>
+                    <div class="from-group">
+                        <label for="phno">Phone No.</label>
+                        <input type="text" name="phno" id="phno" class="form-control">
+                    </div>
+                    <div class="from-group">
+                        <label for="email">Email ID</label>
+                        <input type="text" name="email" id="email" class="form-control">
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-success">Get Free Consultation</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 <!-- Vendor JS Files -->
 <script src="<?php echo base_url() ?>UserAssets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
