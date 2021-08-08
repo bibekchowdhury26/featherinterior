@@ -465,4 +465,36 @@ class Admin extends CI_Controller
 			header('location:' . site_url('Admin'));
 		}
 	}
+	public function consultations()
+	{
+		// $layout = 0;
+		// layout = 0 -->view page
+		// layout = 1 -->add page
+		// layout = 2 -->edit page
+		if (isset($_SESSION['admin'])) {
+			$this->load->model('Consultations');
+			$consultations = $this->Consultations->allConsultation();
+			$data['consultations'] = $consultations;
+			// $data['layout'] = $layout;
+			$this->load->view('Admin/consultations', $data);
+		} else {
+			header('location:' . site_url('Admin'));
+		}
+	}
+	public function estimates()
+	{
+		// $layout = 0;
+		// layout = 0 -->view page
+		// layout = 1 -->add page
+		// layout = 2 -->edit page
+		if (isset($_SESSION['admin'])) {
+			$this->load->model('Estimates');
+			$estimates = $this->Estimates->allEstimate();
+			$data['estimates'] = $estimates;
+			// $data['layout'] = $layout;
+			$this->load->view('Admin/estimates', $data);
+		} else {
+			header('location:' . site_url('Admin'));
+		}
+	}
 }
