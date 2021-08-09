@@ -83,11 +83,11 @@
     </li>
 
     <!-- Nav Item - Charts -->
-    <li class="nav-item">
+    <!-- <li class="nav-item">
         <a class="nav-link" href="charts.html">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Our Works</span></a>
-    </li>
+    </li> -->
 
     <!-- Nav Item - Services -->
     <li class="nav-item">
@@ -112,9 +112,16 @@
 
     <!-- Nav Item - Tables -->
     <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="<?php echo site_url('Admin/consultations') ?>">
             <i class="fas fa-fw fa-table"></i>
-            <span>Tables</span></a>
+            <span>Consultations</span></a>
+    </li>
+
+    <!-- Nav Item - Tables -->
+    <li class="nav-item">
+        <a class="nav-link" href="<?php echo site_url('Admin/estimates') ?>">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Estimates</span></a>
     </li>
 
     <!-- Divider -->
