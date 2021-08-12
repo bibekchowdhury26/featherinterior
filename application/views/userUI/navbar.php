@@ -1,7 +1,8 @@
 <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top ">
     <div class="container-fluid d-flex">
         <div class="contact-info mr-auto">
-            <a class="" href="mailto:help.feather@gmail.com"><i class="icofont-envelope"></i>help.feather@gmail.com</a>
+            <a class="" href="mailto:help.feather@gmail.com"><i
+                    class="icofont-envelope"></i>info@featherinterior.com</a>
             <a class="" href="tel:+919123382534"><i class="icofont-phone"></i>+91 91233 82534</a>
         </div>
         <div class="social-links">

@@ -88,20 +88,20 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="" method="post">
+            <form action="<?php echo site_url('User/getConsultation') ?>" method="post">
                 <div class="modal-body">
 
                     <div class="from-group">
                         <label for="name">Full Name</label>
-                        <input type="text" name="name" id="name" class="form-control">
+                        <input type="text" required name="name" id="name" class="form-control">
                     </div>
                     <div class="from-group">
                         <label for="phno">Phone No.</label>
-                        <input type="text" name="phno" id="phno" class="form-control">
+                        <input type="text" required name="phone" id="phno" class="form-control">
                     </div>
                     <div class="from-group">
                         <label for="email">Email ID</label>
-                        <input type="text" name="email" id="email" class="form-control">
+                        <input type="text" required name="email_id" id="email" class="form-control">
                     </div>
 
                 </div>

@@ -9,13 +9,16 @@
 
 	// Preloader
 	$(window).on("load", function () {
-		if ($("#preloader").length) {
-			$("#preloader")
-				.delay(100)
-				.fadeOut("slow", function () {
-					$(this).remove();
-				});
-		}
+		// if ($("#preloader").length) {
+		// 	$("#preloader")
+		// 		.delay(100)
+		// 		.fadeOut("slow", function () {
+		// 			$(this).remove();
+		// 		});
+		// }
+		// $("#preloader").fadeOut("slow", function () {
+		// 	$(this).remove();
+		// });
 	});
 
 	// Smooth scroll for the navigation menu and links with .scrollto classes
@@ -66,21 +69,20 @@
 	);
 
 	// Activate smooth scroll on page load with hash links in the url
-	$(document).ready(function () {
-		if (window.location.hash) {
-			var initial_nav = window.location.hash;
-			if ($(initial_nav).length) {
-				var scrollto = $(initial_nav).offset().top - scrolltoOffset;
-				$("html, body").animate(
-					{
-						scrollTop: scrollto,
-					},
-					1500,
-					"easeInOutExpo"
-				);
-			}
+
+	if (window.location.hash) {
+		var initial_nav = window.location.hash;
+		if ($(initial_nav).length) {
+			var scrollto = $(initial_nav).offset().top - scrolltoOffset;
+			$("html, body").animate(
+				{
+					scrollTop: scrollto,
+				},
+				1500,
+				"easeInOutExpo"
+			);
 		}
-	});
+	}
 
 	// Mobile Navigation
 	if ($(".nav-menu").length) {

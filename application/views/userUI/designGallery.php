@@ -5,7 +5,7 @@
 
         <div class="section-title">
             <span>Feather Interior Designs</span>
-            <h2>Home Interior Designs</h2>
+            <h2>Feather Interior Designs</h2>
             <p>Find design ideas from our design gallery or book a meeting with dedicated design expert</p>
         </div>
         <div class="container-fluid pr-2 pl-2 mb-3">

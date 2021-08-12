@@ -40,7 +40,7 @@ class Admin extends CI_Controller
 				// die;
 
 				$_SESSION['admin'] = $confirm[0]['username'];
-				header('location:' . site_url('Admin/home'));
+				header('location:' . site_url('Admin/consultations'));
 			} else {
 				// echo 'error';
 				// die;
@@ -77,7 +77,7 @@ class Admin extends CI_Controller
 			// die;
 			$data['services'] = $services;
 			$data['layout'] = $layout;
-			$this->load->view('Admin/services', $data);
+			$this->load->view('admin/services', $data);
 		} else {
 			header('location:' . site_url('Admin'));
 		}
@@ -91,7 +91,7 @@ class Admin extends CI_Controller
 		if (isset($_SESSION['admin'])) {
 			if (!$this->input->post()) {
 				$data['layout'] = $layout;
-				$this->load->view('Admin/services', $data);
+				$this->load->view('admin/services', $data);
 			} else {
 				$data = array(
 					'service_id' => $this->input->post('service_id'),
@@ -129,7 +129,7 @@ class Admin extends CI_Controller
 				// echo '<pre>';
 				// print_R($data);
 				// die;
-				$this->load->view('Admin/services', $data);
+				$this->load->view('admin/services', $data);
 			} else {
 				$id = $this->input->post('id');
 				$data = array(
@@ -177,7 +177,7 @@ class Admin extends CI_Controller
 			$teams = $this->Teams->allTeam();
 			$data['teams'] = $teams;
 			$data['layout'] = $layout;
-			$this->load->view('Admin/teams', $data);
+			$this->load->view('admin/teams', $data);
 		} else {
 			header('location:' . site_url('Admin'));
 		}
@@ -476,7 +476,7 @@ class Admin extends CI_Controller
 			$consultations = $this->Consultations->allConsultation();
 			$data['consultations'] = $consultations;
 			// $data['layout'] = $layout;
-			$this->load->view('Admin/consultations', $data);
+			$this->load->view('admin/consultations', $data);
 		} else {
 			header('location:' . site_url('Admin'));
 		}
@@ -492,7 +492,7 @@ class Admin extends CI_Controller
 			$estimates = $this->Estimates->allEstimate();
 			$data['estimates'] = $estimates;
 			// $data['layout'] = $layout;
-			$this->load->view('Admin/estimates', $data);
+			$this->load->view('admin/estimates', $data);
 		} else {
 			header('location:' . site_url('Admin'));
 		}

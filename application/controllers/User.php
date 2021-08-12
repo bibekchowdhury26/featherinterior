@@ -39,6 +39,11 @@ class User extends CI_Controller
         }
     }
 
+    public function getConsultation(){
+        $this->db->insert('consultations',$this->input->post());
+        header('location:'.site_url());
+    }
+
     public function login()
     {
         $data = array(

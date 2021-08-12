@@ -13,7 +13,7 @@
                 <div class="info-box mb-4">
                     <i class="bx bx-map"></i>
                     <h3>Our Address</h3>
-                    <p>A108 Adam Street, New York, NY 535022</p>
+                    <p>Barasat, Kolkata, WB 700126</p>
                 </div>
             </div>
 
@@ -21,7 +21,7 @@
                 <div class="info-box  mb-4">
                     <i class="bx bx-envelope"></i>
                     <h3>Email Us</h3>
-                    <p>contact@example.com</p>
+                    <p>info@featherinterior.com</p>
                 </div>
             </div>
 
@@ -29,7 +29,7 @@
                 <div class="info-box  mb-4">
                     <i class="bx bx-phone-call"></i>
                     <h3>Call Us</h3>
-                    <p>+1 5589 55488 55</p>
+                    <p>+91 91233 82534</p>
                 </div>
             </div>
 
