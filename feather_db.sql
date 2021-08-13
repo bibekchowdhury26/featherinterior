@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 08, 2021 at 02:30 PM
+-- Generation Time: Aug 13, 2021 at 10:16 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -173,10 +173,20 @@ CREATE TABLE `furniture` (
 CREATE TABLE `gallery_category` (
   `id` int(11) NOT NULL,
   `category_id` varchar(255) NOT NULL,
-  `parent_category` varchar(255) NOT NULL,
+  `parent_category_id` varchar(255) DEFAULT NULL,
   `category_name` varchar(255) NOT NULL,
   `category_description` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `gallery_category`
+--
+
+INSERT INTO `gallery_category` (`id`, `category_id`, `parent_category_id`, `category_name`, `category_description`) VALUES
+(1, 'CAT61169b5b38fcd', NULL, 'Test', 'testing'),
+(2, 'CAT6116a0cd8ca48', NULL, 'Test2', 'testing2'),
+(3, 'CAT6116a0e2e9935', 'CAT61169b5b38fcd', 'Test3', 'testing3'),
+(5, 'CAT6116ac6f2c43f', 'CAT6116ac0c86d53', 'Test5', 'testing5');
 
 -- --------------------------------------------------------
 
@@ -186,11 +196,19 @@ CREATE TABLE `gallery_category` (
 
 CREATE TABLE `gallery_images` (
   `id` int(11) NOT NULL,
+  `image_id` varchar(255) NOT NULL,
   `category_id` varchar(255) NOT NULL,
-  `image` varchar(255) NOT NULL,
-  `image_code` varchar(255) NOT NULL,
+  `image_file_name` varchar(255) NOT NULL,
   `image_desc` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `gallery_images`
+--
+
+INSERT INTO `gallery_images` (`id`, `image_id`, `category_id`, `image_file_name`, `image_desc`) VALUES
+(1, 'IMG6116cc34307c2', 'CAT6116ac6f2c43f', 'images/wardrobe1.jpg', 'jjjjjjhub'),
+(2, 'IMG6116cc34314dc', 'CAT6116ac6f2c43f', 'images/wardrobe2.jpg', 'jjjjjjhub');
 
 -- --------------------------------------------------------
 
@@ -229,6 +247,13 @@ CREATE TABLE `teams` (
   `twitter_link` varchar(255) NOT NULL,
   `linkedin_link` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `teams`
+--
+
+INSERT INTO `teams` (`id`, `name`, `pro_pic`, `qualification`, `facebook_link`, `instagram_link`, `twitter_link`, `linkedin_link`) VALUES
+(2, 'Test1', 'UserAssets/img/team/lady111.jpg', 'mca1', 'fb1', 'ig1', 'tw1', 'li1');
 
 -- --------------------------------------------------------
 
@@ -422,13 +447,13 @@ ALTER TABLE `furniture`
 -- AUTO_INCREMENT for table `gallery_category`
 --
 ALTER TABLE `gallery_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `gallery_images`
 --
 ALTER TABLE `gallery_images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `services`
@@ -440,7 +465,7 @@ ALTER TABLE `services`
 -- AUTO_INCREMENT for table `teams`
 --
 ALTER TABLE `teams`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user`

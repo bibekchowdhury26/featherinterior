@@ -21,7 +21,7 @@ class Admin extends CI_Controller
 	 */
 	public function index()
 	{
-		$this->load->view('admin/login');
+		$this->load->view('Admin/Login');
 	}
 	public function login()
 	{
@@ -52,7 +52,7 @@ class Admin extends CI_Controller
 	{
 		if (isset($_SESSION['admin'])) {
 			$data['bookings'] = $this->db->get('contact_details')->result_array();
-			$this->load->view('admin/dashboard', $data);
+			$this->load->view('Admin/Dashboard', $data);
 		} else {
 			header('location:' . site_url('Admin'));
 		}
@@ -77,7 +77,7 @@ class Admin extends CI_Controller
 			// die;
 			$data['services'] = $services;
 			$data['layout'] = $layout;
-			$this->load->view('admin/services', $data);
+			$this->load->view('Admin/Services', $data);
 		} else {
 			header('location:' . site_url('Admin'));
 		}
@@ -91,7 +91,7 @@ class Admin extends CI_Controller
 		if (isset($_SESSION['admin'])) {
 			if (!$this->input->post()) {
 				$data['layout'] = $layout;
-				$this->load->view('admin/services', $data);
+				$this->load->view('Admin/Services', $data);
 			} else {
 				$data = array(
 					'service_id' => $this->input->post('service_id'),
@@ -129,7 +129,7 @@ class Admin extends CI_Controller
 				// echo '<pre>';
 				// print_R($data);
 				// die;
-				$this->load->view('admin/services', $data);
+				$this->load->view('Admin/Services', $data);
 			} else {
 				$id = $this->input->post('id');
 				$data = array(
@@ -177,7 +177,7 @@ class Admin extends CI_Controller
 			$teams = $this->Teams->allTeam();
 			$data['teams'] = $teams;
 			$data['layout'] = $layout;
-			$this->load->view('admin/teams', $data);
+			$this->load->view('Admin/Teams', $data);
 		} else {
 			header('location:' . site_url('Admin'));
 		}
@@ -191,7 +191,7 @@ class Admin extends CI_Controller
 		if (isset($_SESSION['admin'])) {
 			if (!$this->input->post()) {
 				$data['layout'] = $layout;
-				$this->load->view('Admin/teams', $data);
+				$this->load->view('Admin/Teams', $data);
 			} else {
 				if ($_FILES['picture']['name']) {
 					$config['upload_path'] = 'UserAssets/img/team/';
@@ -201,7 +201,7 @@ class Admin extends CI_Controller
 					if (!$this->upload->do_upload('picture')) {
 						$data = array('error' => $this->upload->display_errors());
 						$data['layout'] = $layout;
-						$this->load->view('Admin/teams', $data);
+						$this->load->view('Admin/Teams', $data);
 					} else {
 						$upload_data = $this->upload->data();
 						$image_path = 'UserAssets/img/team/' . $upload_data['file_name'];
@@ -258,7 +258,7 @@ class Admin extends CI_Controller
 				// echo '<pre>';
 				// print_R($data);
 				// die;
-				$this->load->view('Admin/teams', $data);
+				$this->load->view('Admin/Teams', $data);
 			} else {
 				$id = $this->input->post('id');
 				if ($_FILES['picture']['name']) {
@@ -269,7 +269,7 @@ class Admin extends CI_Controller
 					if (!$this->upload->do_upload('picture')) {
 						$data = array('error' => $this->upload->display_errors());
 						$data['layout'] = $layout;
-						$this->load->view('Admin/editTeams', $data);
+						$this->load->view('Admin/Teams', $data);
 					} else {
 						$upload_data = $this->upload->data();
 						$image_path = 'UserAssets/img/team/' . $upload_data['file_name'];
@@ -335,7 +335,7 @@ class Admin extends CI_Controller
 			$vendors = $this->Vendors->allVendor();
 			$data['vendors'] = $vendors;
 			$data['layout'] = $layout;
-			$this->load->view('Admin/vendors', $data);
+			$this->load->view('Admin/Vendors', $data);
 		} else {
 			header('location:' . site_url('Admin'));
 		}
@@ -349,7 +349,7 @@ class Admin extends CI_Controller
 		if (isset($_SESSION['admin'])) {
 			if (!$this->input->post()) {
 				$data['layout'] = $layout;
-				$this->load->view('Admin/vendors', $data);
+				$this->load->view('Admin/Vendors', $data);
 			} else {
 				if ($_FILES['picture']['name']) {
 					$config['upload_path'] = 'UserAssets/img/vendor/';
@@ -359,7 +359,7 @@ class Admin extends CI_Controller
 					if (!$this->upload->do_upload('picture')) {
 						$data = array('error' => $this->upload->display_errors());
 						$data['layout'] = $layout;
-						$this->load->view('Admin/vendors', $data);
+						$this->load->view('Admin/Vendors', $data);
 					} else {
 						$upload_data = $this->upload->data();
 						$image_path = 'UserAssets/img/vendor/' . $upload_data['file_name'];
@@ -407,7 +407,7 @@ class Admin extends CI_Controller
 				// echo '<pre>';
 				// print_R($data);
 				// die;
-				$this->load->view('Admin/vendors', $data);
+				$this->load->view('Admin/Vendors', $data);
 			} else {
 				$id = $this->input->post('id');
 				if ($_FILES['picture']['name']) {
@@ -476,7 +476,7 @@ class Admin extends CI_Controller
 			$consultations = $this->Consultations->allConsultation();
 			$data['consultations'] = $consultations;
 			// $data['layout'] = $layout;
-			$this->load->view('admin/consultations', $data);
+			$this->load->view('Admin/Consultations', $data);
 		} else {
 			header('location:' . site_url('Admin'));
 		}
@@ -492,7 +492,153 @@ class Admin extends CI_Controller
 			$estimates = $this->Estimates->allEstimate();
 			$data['estimates'] = $estimates;
 			// $data['layout'] = $layout;
-			$this->load->view('admin/estimates', $data);
+			$this->load->view('Admin/Estimates', $data);
+		} else {
+			header('location:' . site_url('Admin'));
+		}
+	}
+	public function Categories()
+	{
+		$layout = 0;
+		// layout = 0 -->view page
+		// layout = 1 -->add page
+		// layout = 2 -->edit page
+		if (isset($_SESSION['admin'])) {
+			$this->load->model('Gallery');
+			$categories = $this->Gallery->viewCategories();
+			$data['categories'] = $categories;
+			$data['layout'] = $layout;
+			$this->load->view('Admin/ImageCategories', $data);
+		} else {
+			header('location:' . site_url('Admin'));
+		}
+	}
+	public function addCategories()
+	{
+		$layout = 1;
+		// layout = 0 -->view page
+		// layout = 1 -->add page
+		// layout = 2 -->edit page
+		if (isset($_SESSION['admin'])) {
+			$this->load->model('Gallery');
+			if (!$this->input->post()) {
+
+				$categories = $this->Gallery->parentCategories();
+				$data['categories'] = $categories;
+				$data['layout'] = $layout;
+
+				$this->load->view('Admin/ImageCategories', $data);
+			} else {
+				if ($this->input->post('parent_category_id') == '') {
+					$data = array(
+						'category_id' => $this->input->post('category_id'),
+						'category_name' => $this->input->post('category_name'),
+						'category_description' => $this->input->post('category_description'),
+					);
+				} else {
+					$data = array(
+						'category_id' => $this->input->post('category_id'),
+						'parent_category_id' => $this->input->post('parent_category_id'),
+						'category_name' => $this->input->post('category_name'),
+						'category_description' => $this->input->post('category_description'),
+					);
+				}
+				// echo '<pre>';
+				// print_R($data);
+				// die;
+				$confirm = $this->Gallery->addCategories($data);
+				if ($confirm) {
+					header('location:' . site_url('Admin/Categories'));
+				} else {
+					header('location:' . site_url('Admin/addCategories'));
+				}
+			}
+		} else {
+			header('location:' . site_url('Admin'));
+		}
+	}
+	public function delCategories()
+	{
+		if (isset($_SESSION['admin'])) {
+			$this->load->model('Gallery');
+			$id = $this->uri->segment(3);
+			$confirm = $this->Gallery->deleteCategories($id);
+			if ($confirm) {
+				header('location:' . site_url('Admin/Categories'));
+			} else {
+				echo '<script>alert("Something went wrong! Try again later.")</script>';;
+			}
+		} else {
+			header('location:' . site_url('Admin'));
+		}
+	}
+	public function Images()
+	{
+		$layout = 0;
+		// layout = 0 -->view page
+		// layout = 1 -->add page
+		// layout = 2 -->edit page
+		if (isset($_SESSION['admin'])) {
+			$this->load->model('Gallery');
+			$images = $this->Gallery->viewImages();
+			$data['images'] = $images;
+			$data['layout'] = $layout;
+			$this->load->view('Admin/Images', $data);
+		} else {
+			header('location:' . site_url('Admin'));
+		}
+	}
+	public function addImages()
+	{
+		$layout = 1;
+		// layout = 0 -->view page
+		// layout = 1 -->add page
+		// layout = 2 -->edit page
+		if (isset($_SESSION['admin'])) {
+			$this->load->model('Gallery');
+			if (!$this->input->post()) {
+				$categories = $this->Gallery->viewCategories();
+				$data['categories'] = $categories;
+				$data['layout'] = $layout;
+				$this->load->view('Admin/Images', $data);
+			} else {
+				$category_id = $this->input->post('category_id');
+				$image_desc = $this->input->post('image_desc');
+				foreach ($_FILES['document']['name'] as $key => $val) {
+					$image_id = uniqid('IMG');
+					if ($_FILES['document']['type'][$key] == 'image/png' || $_FILES['document']['type'][$key] == 'image/jpeg') {
+						move_uploaded_file($_FILES['document']['tmp_name'][$key], './images/' . $val);
+						$data = array(
+							'image_id' => $image_id,
+							'category_id' => $category_id,
+							'image_file_name' => 'images/' . $val,
+							'image_desc' => $image_desc,
+						);
+						// echo "<pre>";
+						// print_r($data);
+						// die;
+						$this->db->insert('gallery_images', $data);
+					} else {
+						echo '<script>alert("Something went wrong! Try again.")</script>';
+					}
+					header('location:' . site_url('Admin/Images'));
+				}
+			}
+		} else {
+			header('location:' . site_url('Admin'));
+		}
+	}
+	public function delImage()
+	{
+		if (isset($_SESSION['admin'])) {
+			$this->load->model('Gallery');
+			$id = $this->uri->segment(3);
+			$confirm = $this->Gallery->deleteImage($id);
+			if ($confirm) {
+				header('location:' . site_url('Admin/Images'));
+			} else {
+				echo '<script>alert("Something went wrong! Try again later.")</script>';;
+			}
 		} else {
 			header('location:' . site_url('Admin'));
 		}
