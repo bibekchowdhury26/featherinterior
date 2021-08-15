@@ -11,13 +11,20 @@
           <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
           <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
         </ol> -->
+            <?php 
+              $count = count($vendors)/4;
+              // echo $count/4;
+              $last = 0;
+            ?>
             <div class="carousel-inner">
-                <div class="carousel-item active">
+                <?php for($i=1;$i<=$count;$i++): ?>
+                <div class="carousel-item <?php if($i==1){echo 'active';} ?>">
+                    <?php for($j=$last;$j<($i*4);$j++): ?>
                     <div class="client-box">
-                        <img src="<?php echo base_url() ?>images/dulux.jpeg" alt="">
+                        <img src="<?php echo base_url().$vendors[$j]['vendor_logo'] ?>" alt="">
                     </div>
-
-                    <div class="client-box">
+                    <?php endfor; $last = $j; ?>
+                    <!-- <div class="client-box">
                         <img src="<?php echo base_url() ?>images/asianpaint.png" alt="">
                     </div>
 
@@ -27,9 +34,10 @@
 
                     <div class="client-box">
                         <img src="<?php echo base_url() ?>images/fevicol.png" alt="">
-                    </div>
+                    </div> -->
                 </div>
-                <div class="carousel-item">
+                <?php endfor; ?>
+                <!-- <div class="carousel-item">
                     <div class="client-box">
                         <img src="<?php echo base_url() ?>images/centuryply.png" alt="">
                     </div>
@@ -62,7 +70,7 @@
                     <div class="client-box">
                         <img src="<?php echo base_url() ?>images/crompton.png" alt="">
                     </div>
-                </div>
+                </div> -->
             </div>
             <!-- <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>

@@ -123,7 +123,7 @@ h6 {
 	.get-consult {
 		position: fixed;
 		display: none;
-		right: 20%;
+		right: 13%;
 		bottom: 15px;
 		z-index: 99999;
 	}

@@ -19,8 +19,15 @@ class Welcome extends CI_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 	public function index()
-	{
-		$this->load->view('userUI/index');
+	{	
+		$this->load->model('Vendors');
+		$data['vendors'] = $this->Vendors->allVendor();
+		
+		$data['services'] = $this->Services->allService();
+		$this->load->model('Gallery');
+		$data['gallery'] = $this->Gallery->allCategory();
+		// echo '<pre>'; print_R($data['gallery']);die;
+		$this->load->view('userUI/index',$data);
 	}
 
 	public function getEstimate(){

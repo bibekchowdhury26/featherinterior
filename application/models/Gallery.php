@@ -6,9 +6,11 @@ class Gallery extends CI_Model
 
     public function allCategory()
     {
-        $query = $this->db->get('gallery_category')
-            ->join('gallery_images', 'gallery_images.category_id = gallery_category.category_id')
-            ->result_array();
+        $query = $this->db->select('*')
+                        ->from('gallery_images')
+                        ->join('gallery_category', 'gallery_category.category_id = gallery_images.category_id')
+                        ->get()
+                        ->result_array();
         return $query;
     }
 
@@ -48,27 +50,5 @@ class Gallery extends CI_Model
         return true;
     }
 
-    public function getTeam($id)
-    {
-        $query = $this->db->where('id', $id)->get('teams')->result_array();
-        return $query;
-    }
-
-    public function updateTeam($id, $data)
-    {
-        $this->db->where('id', $id)->update('teams', $data);
-        return true;
-    }
-
-    public function addTeam($data)
-    {
-        $this->db->insert('teams', $data);
-        return true;
-    }
-
-    public function deleteTeam($id)
-    {
-        $this->db->where('id', $id)->delete('teams');
-        return true;
-    }
+    
 }

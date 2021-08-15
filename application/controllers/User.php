@@ -44,6 +44,33 @@ class User extends CI_Controller
         header('location:'.site_url());
     }
 
+    public function ImageGallery(){
+        $image_id = NULL;
+        $cat_id = NULL;
+        $par_cat_id = NULL;
+        if($this->uri->segment(5)){
+            $image_id = $this->uri->segment(5);
+            $cat_id = $this->uri->segment(4);
+            $par_cat_id = $this->uri->segment(3);
+            $data['parent_category'] = $this->db->where('category_id',$par_cat_id)->get('gallery_category')->result_array();
+            $data['category'] = $this->db->where('category_id',$cat_id)->get('gallery_category')->result_array();
+        }elseif($this->uri->segment(4)){
+            $image_id = $this->uri->segment(4);
+            $cat_id = $this->uri->segment(3);
+            $data['parent_category'] = $this->db->where('category_id',$cat_id)->get('gallery_category')->result_array();
+        }
+        $data['selected'] = $this->db->where('image_id',$image_id)->get('gallery_images')->result_array();
+        $search = array(
+            'image_id !=' => $image_id,
+            'category_id' => $cat_id
+        );
+        $data['related'] = $this->db->where($search)->order_by('rand()')->limit(3)->get('gallery_images')->result_array();
+        // echo '<pre>';Print_R($data['related']);die;
+        $this->load->model('Gallery');
+		$data['gallery'] = $this->Gallery->allCategory();
+        $this->load->view('userUI/image-gallery',$data);
+    }
+
     public function login()
     {
         $data = array(

@@ -11,20 +11,21 @@
         <div class="container-fluid pr-2 pl-2 mb-3">
             <br>
             <h5 class="text-dark">Trending Designs
-                <!-- <i class="icofont-chart-line"></i> --> <span class="float-right" style="font-size:20px;"><a
-                        href="">See All
-                        <i class="icofont-arrow-right"></i></a></span>
+                <!-- <i class="icofont-chart-line"></i> -->
             </h5>
             <br>
             <div class="owl-carousel owl-theme">
+                <?php shuffle($gallery);
+                 foreach($gallery as $x): ?>
                 <div class="item">
                     <div class="card mr-2 ml-2">
-                        <img src="<?php echo base_url() ?>UserAssets/img/design/wardrobe1.jpg" alt=""
-                            class="card-img-top">
+                        <a
+                            href="<?php echo site_url('User/ImageGallery/'); if($x['parent_category_id'] != ''){echo $x['parent_category_id'].'/'.$x['category_id'].'/'.$x['image_id'];}else{echo $x['category_id'].'/'.$x['image_id'];} ?>"><img
+                                src="<?php echo base_url().$x['image_file_name'] ?>" alt="" class="card-img-top"></a>
                     </div>
                 </div>
-
-                <div class="item">
+                <?php endforeach; ?>
+                <!-- <div class="item">
                     <div class="card mr-2 ml-2">
                         <img src="<?php echo base_url() ?>UserAssets/img/design/kitchen2.jpg" alt=""
                             class="card-img-top">
@@ -56,19 +57,28 @@
                         <img src="<?php echo base_url() ?>UserAssets/img/design/home2.jpeg" alt="" class="card-img-top">
                     </div>
 
-                </div>
+                </div> -->
             </div>
         </div>
         <div class="container-fluid pr-2 pl-2 mb-3">
             <br>
             <h5 class="text-dark">Home Office
-                <!-- <i class="icofont-chart-line"></i> --> <span class="float-right" style="font-size:20px;"><a
-                        href="">See All
-                        <i class="icofont-arrow-right"></i></a></span>
+                <!-- <i class="icofont-chart-line"></i> -->
             </h5>
             <br>
             <div class="owl-carousel owl-theme">
+                <?php foreach($gallery as $x): ?>
+                <?php if($x['category_name'] == 'Home Office'): ?>
                 <div class="item">
+                    <div class="card mr-2 ml-2">
+                        <a
+                            href="<?php echo site_url('User/ImageGallery/'); if($x['parent_category_id'] != ''){echo $x['parent_category_id'].'/'.$x['category_id'].'/'.$x['image_id'];}else{echo $x['category_id'].'/'.$x['image_id'];} ?>"><img
+                                src="<?php echo base_url().$x['image_file_name'] ?>" alt="" class="card-img-top"></a>
+                    </div>
+                </div>
+                <?php endif; ?>
+                <?php endforeach; ?>
+                <!-- <div class="item">
                     <div class="card mr-2 ml-2">
                         <img src="<?php echo base_url() ?>UserAssets/img/design/home1.jpeg" alt="" class="card-img-top">
                     </div>
@@ -108,16 +118,26 @@
                         <img src="<?php echo base_url() ?>UserAssets/img/design/home7.jpeg" alt="" class="card-img-top">
                     </div>
 
-                </div>
+                </div> -->
             </div>
         </div>
         <div class="container-fluid pr-2 pl-2 mt-2 mb-3">
             <br>
-            <h5 class="text-dark">Wardrobe Designs <span class="float-right" style="font-size:20px;"><a href="">See All
-                        <i class="icofont-arrow-right"></i></a></span></h5>
+            <h5 class="text-dark">Wardrobe Designs </h5>
             <br>
             <div class="owl-carousel owl-theme">
+                <?php foreach($gallery as $x): ?>
+                <?php if($x['category_name'] == 'Wardrobe Design'): ?>
                 <div class="item">
+                    <div class="card mr-2 ml-2">
+                        <a
+                            href="<?php echo site_url('User/ImageGallery/'); if($x['parent_category_id'] != ''){echo $x['parent_category_id'].'/'.$x['category_id'].'/'.$x['image_id'];}else{echo $x['category_id'].'/'.$x['image_id'];} ?>"><img
+                                src="<?php echo base_url().$x['image_file_name'] ?>" alt="" class="card-img-top"></a>
+                    </div>
+                </div>
+                <?php endif; ?>
+                <?php endforeach; ?>
+                <!-- <div class="item">
                     <div class="card mr-2 ml-2">
                         <img src="<?php echo base_url() ?>UserAssets/img/design/wardrobe1.jpg" alt=""
                             class="card-img-top">
@@ -164,16 +184,26 @@
                             class="card-img-top">
                     </div>
 
-                </div>
+                </div> -->
             </div>
         </div>
         <div class="container-fluid pr-2 pl-2 mt-2 mb-3">
             <br>
-            <h5 class="text-dark">Modular Kitchen <span class="float-right" style="font-size:20px;"><a href="">See All
-                        <i class="icofont-arrow-right"></i></a></span></h5>
+            <h5 class="text-dark">Modular Kitchen </h5>
             <br>
             <div class="owl-carousel owl-theme">
+                <?php foreach($gallery as $x): ?>
+                <?php if($x['category_name'] == 'Modular Kitchen'): ?>
                 <div class="item">
+                    <div class="card mr-2 ml-2">
+                        <a
+                            href="<?php echo site_url('User/ImageGallery/'); if($x['parent_category_id'] != ''){echo $x['parent_category_id'].'/'.$x['category_id'].'/'.$x['image_id'];}else{echo $x['category_id'].'/'.$x['image_id'];} ?>"><img
+                                src="<?php echo base_url().$x['image_file_name'] ?>" alt="" class="card-img-top"></a>
+                    </div>
+                </div>
+                <?php endif; ?>
+                <?php endforeach; ?>
+                <!-- <div class="item">
                     <div class="card mr-2 ml-2">
                         <img src="<?php echo base_url() ?>UserAssets/img/design/kitchen1.jpg" alt=""
                             class="card-img-top">
@@ -214,7 +244,7 @@
                             class="card-img-top">
                     </div>
 
-                </div>
+                </div> -->
             </div>
         </div>
 

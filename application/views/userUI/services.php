@@ -9,14 +9,15 @@
         </div>
 
         <div class="row justify-content-center">
+            <?php foreach($services as $x): ?>
             <div class="col-6 col-sm-6 col-lg-2 col-md-2 d-flex align-items-stretch" data-aos="fade-up">
                 <div class="icon-box">
                     <div class="icon"><i class="bx bxl-dribbble"></i></div>
-                    <h6><a href="">Modular Kitchen</a></h6>
+                    <h6><a href=""><?php echo $x['service_name'] ?></a></h6>
                 </div>
             </div>
-
-            <div class="col-6 col-sm-6 col-lg-2 col-md-2 d-flex align-items-stretch" data-aos="fade-up"
+            <?php endforeach; ?>
+            <!-- <div class="col-6 col-sm-6 col-lg-2 col-md-2 d-flex align-items-stretch" data-aos="fade-up"
                 data-aos-delay="150">
                 <div class="icon-box">
                     <div class="icon"><i class="bx bx-file"></i></div>
@@ -54,7 +55,7 @@
                     <div class="icon"><i class="bx bx-arch"></i></div>
                     <h6><a href="">Wall Paint</a></h6>
                 </div>
-            </div>
+            </div> -->
 
         </div>
 

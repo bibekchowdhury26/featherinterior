@@ -10,8 +10,8 @@
                         <p>
                             Greater Kolkata <br>
                             West Bengal, India<br><br>
-                            <strong>Phone:</strong> +91 1234 567890<br>
-                            <strong>Email:</strong> contact@featherinterior.com<br>
+                            <strong>Phone:</strong> +91 91233 82534<br>
+                            <strong>Email:</strong> info@featherinterior.com<br>
                         </p>
                         <div class="social-links mt-3">
                             <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
@@ -46,13 +46,16 @@
 
                 <div class="col-lg-2 col-md-6 col-sm-6 footer-links">
                     <h4>Our Services</h4>
+                    <?php $services = $this->Services->allService(); ?>
                     <ul>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Modular Kitchen</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">False Ceiling</a></li>
+                        <?php foreach($services as $x): ?>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#"><?php echo $x['service_name'] ?></a></li>
+                        <?php endforeach; ?>
+                        <!-- <li><i class="bx bx-chevron-right"></i> <a href="#">False Ceiling</a></li>
                         <li><i class="bx bx-chevron-right"></i> <a href="#">Electric Room</a></li>
                         <li><i class="bx bx-chevron-right"></i> <a href="#">Wall Panneling</a></li>
                         <li><i class="bx bx-chevron-right"></i> <a href="#">Wall Paper</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Wall Paint</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Wall Paint</a></li> -->
                     </ul>
                 </div>
 
@@ -76,7 +79,7 @@
 </footer><!-- End Footer -->
 <a data-toggle="modal" data-target="#consultation_form" class="get-consult btn text-white text-uppercase">Get Online
     Free Consultation</a>
-<a href="#" class="btn-contact-form"><i class="icofont-ui-messaging"></i></a>
+<!-- <a href="#" class="btn-contact-form"><i class="icofont-ui-messaging"></i></a> -->
 <div id="preloader"></div>
 <div class="modal fade" id="consultation_form" tabindex="-1" role="dialog" aria-labelledby="consultation_formTitle"
     aria-hidden="true">
