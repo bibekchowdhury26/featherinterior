@@ -94,7 +94,7 @@
                                         <thead>
                                             <tr>
                                                 <th>Image ID</th>
-                                                <th>Category ID</th>
+                                                <th>Category</th>
                                                 <th>Picture</th>
                                                 <th>Description</th>
                                                 <!-- <th>Edit</th> -->
@@ -104,7 +104,7 @@
                                         <tfoot>
                                             <tr>
                                                 <th>Image ID</th>
-                                                <th>Category ID</th>
+                                                <th>Category</th>
                                                 <th>Picture</th>
                                                 <th>Description</th>
                                                 <!-- <th>Edit</th> -->
@@ -117,7 +117,7 @@
                                                     <td class="text-center" style="vertical-align: middle;">
                                                         <?php echo $x['image_id'] ?></td>
                                                     <td class="text-center" style="vertical-align: middle;">
-                                                        <?php echo $x['category_id'] ?></td>
+                                                        <?php echo $x['category_name'] ?></td>
                                                     <td class="text-center"><img width="150" height="100" src="<?php echo base_url() . $x['image_file_name'] ?>"></td>
                                                     <td class="text-center" style="vertical-align: middle;">
                                                         <?php echo $x['image_desc'] ?></td>
