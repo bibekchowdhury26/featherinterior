@@ -7,16 +7,19 @@ class Gallery extends CI_Model
     public function allCategory()
     {
         $query = $this->db->select('*')
-                        ->from('gallery_images')
-                        ->join('gallery_category', 'gallery_category.category_id = gallery_images.category_id')
-                        ->get()
-                        ->result_array();
+            ->from('gallery_images')
+            ->join('gallery_category', 'gallery_category.category_id = gallery_images.category_id')
+            ->get()
+            ->result_array();
         return $query;
     }
 
     public function viewCategories()
     {
         $query = $this->db->get('gallery_category')->result_array();
+        // echo '<pre>';
+        // print_R($query);
+        // die;
         return $query;
     }
 
@@ -32,6 +35,18 @@ class Gallery extends CI_Model
         return true;
     }
 
+    public function getCategory($id)
+    {
+        $query = $this->db->where('id', $id)->get('gallery_category')->result_array();
+        return $query;
+    }
+
+    public function updateCategory($id, $data)
+    {
+        $this->db->where('id', $id)->update('gallery_category', $data);
+        return true;
+    }
+
     public function deleteCategories($id)
     {
         $this->db->where('id', $id)->delete('gallery_category');
@@ -40,7 +55,11 @@ class Gallery extends CI_Model
 
     public function viewImages()
     {
-        $query = $this->db->get('gallery_images')->result_array();
+        $query = $this->db->select('*')
+            ->from('gallery_images')
+            ->join('gallery_category', 'gallery_category.category_id = gallery_images.category_id')
+            ->get()
+            ->result_array();
         return $query;
     }
 
@@ -49,6 +68,4 @@ class Gallery extends CI_Model
         $this->db->where('id', $id)->delete('gallery_images');
         return true;
     }
-
-    
 }

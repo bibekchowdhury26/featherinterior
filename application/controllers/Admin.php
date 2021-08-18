@@ -195,7 +195,7 @@ class Admin extends CI_Controller
 			} else {
 				if ($_FILES['picture']['name']) {
 					$config['upload_path'] = 'UserAssets/img/team/';
-					$config['allowed_types'] = 'gif|jpg|png';
+					$config['allowed_types'] = 'gif|jpg|png|svj|tif|tiff|jpeg|bmp|eps|raw|cr2|nef|orf|sr2';
 
 					$this->load->library('upload', $config);
 					if (!$this->upload->do_upload('picture')) {
@@ -263,7 +263,7 @@ class Admin extends CI_Controller
 				$id = $this->input->post('id');
 				if ($_FILES['picture']['name']) {
 					$config['upload_path'] = 'UserAssets/img/team/';
-					$config['allowed_types'] = 'gif|jpg|png';
+					$config['allowed_types'] = 'gif|jpg|png|svj|tif|tiff|jpeg|bmp|eps|raw|cr2|nef|orf|sr2';
 
 					$this->load->library('upload', $config);
 					if (!$this->upload->do_upload('picture')) {
@@ -353,7 +353,7 @@ class Admin extends CI_Controller
 			} else {
 				if ($_FILES['picture']['name']) {
 					$config['upload_path'] = 'UserAssets/img/vendor/';
-					$config['allowed_types'] = 'gif|jpg|png';
+					$config['allowed_types'] = 'gif|jpg|png|svj|tif|tiff|jpeg|bmp|eps|raw|cr2|nef|orf|sr2';
 
 					$this->load->library('upload', $config);
 					if (!$this->upload->do_upload('picture')) {
@@ -412,7 +412,7 @@ class Admin extends CI_Controller
 				$id = $this->input->post('id');
 				if ($_FILES['picture']['name']) {
 					$config['upload_path'] = 'UserAssets/img/vendor/';
-					$config['allowed_types'] = 'gif|jpg|png';
+					$config['allowed_types'] = 'gif|jpg|png|svj|tif|tiff|jpeg|bmp|eps|raw|cr2|nef|orf|sr2';
 
 					$this->load->library('upload', $config);
 					if (!$this->upload->do_upload('picture')) {
@@ -508,6 +508,9 @@ class Admin extends CI_Controller
 			$categories = $this->Gallery->viewCategories();
 			$data['categories'] = $categories;
 			$data['layout'] = $layout;
+			// echo '<pre>';
+			// print_R($data);
+			// die;
 			$this->load->view('Admin/ImageCategories', $data);
 		} else {
 			header('location:' . site_url('Admin'));
@@ -557,6 +560,52 @@ class Admin extends CI_Controller
 			header('location:' . site_url('Admin'));
 		}
 	}
+	public function editCategories()
+	{
+		$layout = 2;
+		// layout = 0 -->view page
+		// layout = 1 -->add page
+		// layout = 2 -->edit page
+		if (isset($_SESSION['admin'])) {
+			$this->load->model('Gallery');
+			if (!$this->input->post()) {
+				$id = $this->uri->segment(3);
+				$category = $this->Gallery->getCategory($id);
+				$categories = $this->Gallery->parentCategories();
+				$data['category'] = $category;
+				$data['categories'] = $categories;
+				$data['layout'] = $layout;
+				$this->load->view('Admin/ImageCategories', $data);
+			} else {
+				$id = $this->input->post('id');
+				if ($this->input->post('parent_category_id') == '') {
+					$data = array(
+						'category_id' => $this->input->post('category_id'),
+						'category_name' => $this->input->post('category_name'),
+						'category_description' => $this->input->post('category_description'),
+					);
+				} else {
+					$data = array(
+						'category_id' => $this->input->post('category_id'),
+						'parent_category_id' => $this->input->post('parent_category_id'),
+						'category_name' => $this->input->post('category_name'),
+						'category_description' => $this->input->post('category_description'),
+					);
+				}
+				// echo '<pre>';
+				// print_R($data);
+				// die;
+				$confirm = $this->Gallery->updateCategory($id, $data);
+				if ($confirm) {
+					header('location:' . site_url('Admin/Categories'));
+				} else {
+					header('location:' . site_url('Admin/editCategories'));
+				}
+			}
+		} else {
+			header('location:' . site_url('Admin'));
+		}
+	}
 	public function delCategories()
 	{
 		if (isset($_SESSION['admin'])) {
@@ -583,6 +632,9 @@ class Admin extends CI_Controller
 			$images = $this->Gallery->viewImages();
 			$data['images'] = $images;
 			$data['layout'] = $layout;
+			// echo '<pre>';
+			// print_R($data);
+			// die;
 			$this->load->view('Admin/Images', $data);
 		} else {
 			header('location:' . site_url('Admin'));

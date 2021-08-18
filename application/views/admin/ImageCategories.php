@@ -97,7 +97,7 @@
                                                 <th>Parent Category</th>
                                                 <th>Category Name</th>
                                                 <th>Description</th>
-                                                <!-- <th>Edit</th> -->
+                                                <th>Edit</th>
                                                 <th>Delete</th>
                                             </tr>
                                         </thead>
@@ -107,7 +107,7 @@
                                                 <th>Parent Category</th>
                                                 <th>Category Name</th>
                                                 <th>Description</th>
-                                                <!-- <th>Edit</th> -->
+                                                <th>Edit</th>
                                                 <th>Delete</th>
                                             </tr>
                                         </tfoot>
@@ -122,8 +122,7 @@
                                                         <?php echo $x['category_name'] ?></td>
                                                     <td class="text-center" style="vertical-align: middle;">
                                                         <?php echo $x['category_description'] ?></td>
-                                                    <!-- <td class="text-center" style="vertical-align: middle;"><a class="btn btn-primary btn-rounded" href="<?php //echo site_url('Admin/editTeams/' . $x['id']) 
-                                                                                                                                                                ?>"><i class="fas fa-pencil-alt m-r-5"></i></a></td> -->
+                                                    <td class="text-center" style="vertical-align: middle;"><a class="btn btn-primary btn-rounded" href="<?php echo site_url('Admin/editCategories/' . $x['id']) ?>"><i class="fas fa-pencil-alt m-r-5"></i></a></td>
                                                     <td class="text-center" style="vertical-align: middle;"><a class="btn btn-danger btn-rounded" href="<?php echo site_url('Admin/delCategories/' . $x['id']) ?>" onclick="return confirm('Are you sure, you want to delete it?')"><i class="fas fa-trash m-r-5"></i></a></td>
                                                 </tr>
                                             <?php endforeach; ?>
@@ -177,6 +176,64 @@
 
                                     <div class="m-t-20 text-center">
                                         <button type="submit" class="btn btn-primary submit-btn" style="margin-bottom: 15px;">Add Category</button>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    <?php elseif ($layout == 2) : ?>
+                        <!-- Edit Page-->
+                        <div class="row">
+                            <div class="col-lg-8 offset-lg-2 pt-5">
+                                <h4 class="page-title">Edit Category</h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-8 offset-lg-2 pt-3">
+                                <form action="<?php echo site_url('Admin/editCategories') ?>" method="post">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Category ID: </label>
+                                                <input class="form-control" name="category_id" type="text" value="<?php echo $category[0]['category_id'] ?>" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Select Parent Category: </label>
+                                                <select class="form-control" name="parent_category_id" type="text">
+                                                    <option value="">None</option>
+                                                    <?php foreach ($categories as $x) { ?>
+                                                        <option <?php if ($category[0]['parent_category_id'] == $x['category_id']) {
+                                                                    echo 'selected';
+                                                                } ?> value="<?php echo $x['category_id'] ?>"><?php echo $x['category_name'] ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 pt-2">
+                                            <div class="form-group">
+                                                <label>Category Name: <span class="text-danger">*</span></label>
+                                                <input class="form-control" name="category_name" type="text" value="<?php echo $category[0]['category_name'] ?>" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12 pt-2">
+                                            <div class="form-group">
+                                                <label>Description: <span class="text-danger">*</span></label>
+                                                <textarea name="category_description" class="form-control" rows="4" required><?php echo $category[0]['category_description'] ?></textarea>
+                                                <!-- <input class="form-control" name="category_description" type="text" required> -->
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 pt-2" style="display: none;">
+                                            <div class="form-group">
+                                                <label>ID: <span class="text-danger"></span></label>
+                                                <input class="form-control" name="id" type="text" value="<?php echo $category[0]['id']; ?>" readonly>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="m-t-20 text-center">
+                                        <button type="submit" class="btn btn-primary submit-btn" style="margin-bottom: 15px;">Save Category</button>
                                     </div>
 
                                 </form>
