@@ -204,7 +204,9 @@
                                                 <select class="form-control" name="parent_category_id" type="text">
                                                     <option value="">None</option>
                                                     <?php foreach ($categories as $x) { ?>
-                                                        <option value="<?php echo $x['category_id'] ?>"><?php echo $x['category_name'] ?></option>
+                                                        <option <?php if ($category[0]['parent_category_id'] == $x['category_id']) {
+                                                                    echo 'selected';
+                                                                } ?> value="<?php echo $x['category_id'] ?>"><?php echo $x['category_name'] ?></option>
                                                     <?php } ?>
                                                 </select>
                                             </div>
