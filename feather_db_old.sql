@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 13, 2021 at 10:16 PM
+-- Generation Time: Aug 24, 2021 at 07:18 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -58,7 +58,8 @@ CREATE TABLE `consultations` (
 --
 
 INSERT INTO `consultations` (`id`, `name`, `email_id`, `phone`) VALUES
-(1, 'Arpan', 'arpan@gmail.com', '9252520012');
+(1, 'Arpan', 'arpan@gmail.com', '9252520012'),
+(2, 'Bibek chowdhury', 'mailtoprithul@gmail.com', '+918981822725');
 
 -- --------------------------------------------------------
 
@@ -136,20 +137,26 @@ INSERT INTO `customer_bills` (`id`, `invoice`, `customer`, `email`, `address`, `
 
 CREATE TABLE `estimates` (
   `id` int(11) NOT NULL,
-  `image` varchar(255) NOT NULL,
-  `rooms` varchar(255) NOT NULL,
-  `furnitures` varchar(255) NOT NULL,
+  `home_plan` varchar(500) NOT NULL,
+  `furnitures` varchar(1000) NOT NULL,
   `name` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `phone` varchar(100) NOT NULL
+  `phone` varchar(100) NOT NULL,
+  `address` longtext NOT NULL,
+  `false_ceiling` int(10) NOT NULL,
+  `electric_room` int(10) NOT NULL,
+  `modular_kitchen` int(10) NOT NULL,
+  `wall_panel` int(10) NOT NULL,
+  `wall_paper` int(10) NOT NULL,
+  `wall_paint` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `estimates`
 --
 
-INSERT INTO `estimates` (`id`, `image`, `rooms`, `furnitures`, `name`, `email`, `phone`) VALUES
-(1, 'UserAssets/img/team/final.png', 'ggxgvsxg', 'xsgxcvysfv', 'xgvxtsvxyswgv', 'sxhvsxysgvxysxg', 'sxgvgsvxcsgvx');
+INSERT INTO `estimates` (`id`, `home_plan`, `furnitures`, `name`, `email`, `phone`, `address`, `false_ceiling`, `electric_room`, `modular_kitchen`, `wall_panel`, `wall_paper`, `wall_paint`) VALUES
+(1, 'UserAssets/img/team/final.png', 'xsgxcvysfv', 'xgvxtsvxyswgv', 'sxhvsxysgvxysxg', 'sxgvgsvxcsgvx', '', 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -183,10 +190,10 @@ CREATE TABLE `gallery_category` (
 --
 
 INSERT INTO `gallery_category` (`id`, `category_id`, `parent_category_id`, `category_name`, `category_description`) VALUES
-(1, 'CAT61169b5b38fcd', NULL, 'Test', 'testing'),
-(2, 'CAT6116a0cd8ca48', NULL, 'Test2', 'testing2'),
-(3, 'CAT6116a0e2e9935', 'CAT61169b5b38fcd', 'Test3', 'testing3'),
-(5, 'CAT6116ac6f2c43f', 'CAT6116ac0c86d53', 'Test5', 'testing5');
+(6, 'CAT61187eaf60fe3', NULL, 'Home Office', 'Home Office Designs'),
+(7, 'CAT61187ed53b4d0', NULL, 'Wardrobe Design', 'Wardrobe Designs to view'),
+(8, 'CAT61187eec305ec', NULL, 'Modular Kitchen', 'Modular Kitchen Designs'),
+(9, 'CAT6120ad7e5c121', NULL, 'Electric Room', 'skajdfhkasdlfkj;dslfglsdmgf');
 
 -- --------------------------------------------------------
 
@@ -207,8 +214,30 @@ CREATE TABLE `gallery_images` (
 --
 
 INSERT INTO `gallery_images` (`id`, `image_id`, `category_id`, `image_file_name`, `image_desc`) VALUES
-(1, 'IMG6116cc34307c2', 'CAT6116ac6f2c43f', 'images/wardrobe1.jpg', 'jjjjjjhub'),
-(2, 'IMG6116cc34314dc', 'CAT6116ac6f2c43f', 'images/wardrobe2.jpg', 'jjjjjjhub');
+(7, 'IMG61187f4d7965d', 'CAT61187eaf60fe3', 'images/home1.jpeg', 'Home office design image'),
+(8, 'IMG61187f4d7c80d', 'CAT61187eaf60fe3', 'images/home2.jpeg', 'Home office design image'),
+(9, 'IMG61187f4d7d15f', 'CAT61187eaf60fe3', 'images/home3.jpeg', 'Home office design image'),
+(10, 'IMG61187f4d7d8e6', 'CAT61187eaf60fe3', 'images/home4.jpeg', 'Home office design image'),
+(11, 'IMG61187f4d7dffc', 'CAT61187eaf60fe3', 'images/home5.jpeg', 'Home office design image'),
+(12, 'IMG61187f4d7e7d1', 'CAT61187eaf60fe3', 'images/home6.jpeg', 'Home office design image'),
+(13, 'IMG61187f4d7ee40', 'CAT61187eaf60fe3', 'images/home7.jpeg', 'Home office design image'),
+(14, 'IMG61187f74372a8', 'CAT61187ed53b4d0', 'images/wardrobe1.jpg', 'Wardrobe Design catalog'),
+(15, 'IMG61187f74380c4', 'CAT61187ed53b4d0', 'images/wardrobe2.jpg', 'Wardrobe Design catalog'),
+(16, 'IMG61187f7438c60', 'CAT61187ed53b4d0', 'images/wardrobe3.jpg', 'Wardrobe Design catalog'),
+(17, 'IMG61187f74394a5', 'CAT61187ed53b4d0', 'images/wardrobe4.jpg', 'Wardrobe Design catalog'),
+(18, 'IMG61187f7439a78', 'CAT61187ed53b4d0', 'images/wardrobe5.jpg', 'Wardrobe Design catalog'),
+(19, 'IMG61187f743a077', 'CAT61187ed53b4d0', 'images/wardrobe6.jpg', 'Wardrobe Design catalog'),
+(20, 'IMG61187f743a626', 'CAT61187ed53b4d0', 'images/wardrobe7.jpg', 'Wardrobe Design catalog'),
+(21, 'IMG61187faf3a3df', 'CAT61187eec305ec', 'images/kitchen1.jpg', 'Modular Kitchen Design Catalog'),
+(22, 'IMG61187faf3ae19', 'CAT61187eec305ec', 'images/kitchen2.jpg', 'Modular Kitchen Design Catalog'),
+(23, 'IMG61187faf3bd14', 'CAT61187eec305ec', 'images/kitchen3.jpg', 'Modular Kitchen Design Catalog'),
+(24, 'IMG61187faf3c650', 'CAT61187eec305ec', 'images/kitchen4.jpg', 'Modular Kitchen Design Catalog'),
+(25, 'IMG61187faf3d00c', 'CAT61187eec305ec', 'images/kitchen5.jpg', 'Modular Kitchen Design Catalog'),
+(26, 'IMG61187faf3d811', 'CAT61187eec305ec', 'images/kitchen6.jpg', 'Modular Kitchen Design Catalog'),
+(27, 'IMG6120adce4ea43', 'CAT6120ad7e5c121', 'images/tata.png', 'kajsdhkjhasljsdljg;lmdsf.g,'),
+(28, 'IMG6120adce59acf', 'CAT6120ad7e5c121', 'images/maserati.png', 'kajsdhkjhasljsdljg;lmdsf.g,'),
+(29, 'IMG6120adce5b400', 'CAT6120ad7e5c121', 'images/lincoln.png', 'kajsdhkjhasljsdljg;lmdsf.g,'),
+(30, 'IMG6120adce5c8a3', 'CAT6120ad7e5c121', 'images/audi.png', 'kajsdhkjhasljsdljg;lmdsf.g,');
 
 -- --------------------------------------------------------
 
@@ -218,6 +247,7 @@ INSERT INTO `gallery_images` (`id`, `image_id`, `category_id`, `image_file_name`
 
 CREATE TABLE `services` (
   `id` int(11) NOT NULL,
+  `icon` varchar(255) NOT NULL,
   `service_id` varchar(255) NOT NULL,
   `service_name` varchar(255) NOT NULL,
   `service_desc` mediumtext NOT NULL
@@ -227,9 +257,13 @@ CREATE TABLE `services` (
 -- Dumping data for table `services`
 --
 
-INSERT INTO `services` (`id`, `service_id`, `service_name`, `service_desc`) VALUES
-(1, '122455445', 'demo', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'),
-(2, '3164494626', 'demo2', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English.');
+INSERT INTO `services` (`id`, `icon`, `service_id`, `service_name`, `service_desc`) VALUES
+(3, '', 'SRV611876642de5b', 'Modular Kitchen', 'something'),
+(4, '', 'SRV61187677cebbc', 'False Ceiling', 'something'),
+(5, '', 'SRV61187690e83b3', 'Electric Room', 'something'),
+(6, '', 'SRV6118769e19ac6', 'Wall Panneling', 'something'),
+(7, '', 'SRV611876ae1ca93', 'Wall Paper', 'something'),
+(8, '', 'SRV611876d49b106', 'Wall Paint', 'something');
 
 -- --------------------------------------------------------
 
@@ -319,6 +353,20 @@ CREATE TABLE `vendors` (
   `vendor_logo` varchar(255) NOT NULL,
   `description` longtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `vendors`
+--
+
+INSERT INTO `vendors` (`id`, `vendor_name`, `vendor_logo`, `description`) VALUES
+(1, 'Asian Paint', 'UserAssets/img/vendor/asianpaint.png', 'Paint'),
+(2, 'Berger', 'UserAssets/img/vendor/berger.png', 'paint'),
+(3, 'Century Ply', 'UserAssets/img/vendor/centuryply.png', 'Ply wood'),
+(4, 'Crompton', 'UserAssets/img/vendor/crompton.png', 'Electricals'),
+(5, 'Fevicol', 'UserAssets/img/vendor/fevicol.png', 'Adhesive'),
+(6, 'Green Ply', 'UserAssets/img/vendor/greenply.png', 'Ply wood'),
+(7, 'Havels', 'UserAssets/img/vendor/havels.png', 'Electricals'),
+(8, 'Mescab', 'UserAssets/img/vendor/mescab.png', 'Something');
 
 --
 -- Indexes for dumped tables
@@ -417,7 +465,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `consultations`
 --
 ALTER TABLE `consultations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `contact_details`
@@ -447,19 +495,19 @@ ALTER TABLE `furniture`
 -- AUTO_INCREMENT for table `gallery_category`
 --
 ALTER TABLE `gallery_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `gallery_images`
 --
 ALTER TABLE `gallery_images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `teams`
@@ -483,7 +531,7 @@ ALTER TABLE `user_registration`
 -- AUTO_INCREMENT for table `vendors`
 --
 ALTER TABLE `vendors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

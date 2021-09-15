@@ -48,12 +48,39 @@
 
     <!-- ======= Hero Section ======= -->
     <section id="hero" class="d-flex align-items-center">
-        <div class="container hero-inner position-relative" data-aos="fade-up" data-aos-delay="500">
-            <a class="btn btn-gfe btn-gfe-mob mt-2 mx-auto py-auto mb-2 text-white" href="#">Get Free Estimate</a>
-            <h1>Get personalised home interiors in <span class="text-danger">just 40 days</span></h1>
-            <h2><strong class="text-danger">India's no.1</strong> Customized Interior Decorator team</h2>
-            <a data-toggle="modal" data-target="#consultation_form" class="btn-get-started">Get
-                Online Free Consultation</a>
+        <div class="container hero-inner position-relative">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                    <a class="btn btn-gfe btn-gfe-mob mt-2 mx-auto py-auto mb-2 text-white" href="#">Get Free
+                        Estimate</a>
+                    <h1>Get personalised home interiors in <span class="text-danger">just 40 days</span></h1>
+                    <h2><strong class="text-danger">India's no.1</strong> Customized Interior Decorator team</h2>
+                    <a data-toggle="modal" data-target="#consultation_form" class="btn-get-started">Get
+                        Online Free Consultation</a>
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                    <form method="post" action="<?php echo site_url('User/getConsultation') ?>">
+                        <h2 class="text-center">Get Consultation</h2>
+                        <div class="form-group">
+                            <label class="text-dark" for="">Name</label>
+                            <input class="form-control" type="text" name="name" id="">
+                        </div>
+                        <div class="form-group">
+                            <label class="text-dark" for="">Email</label>
+                            <input class="form-control" type="email" name="email" id="">
+                        </div>
+                        <div class="form-group">
+                            <label class="text-dark" for="">Phone No.</label>
+                            <input class="form-control" type="text" name="phone" id="">
+                        </div>
+                        <div class="from-group justify-content-center">
+                            <button type="submit" class="btn btn-danger">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
         </div>
     </section><!-- End Hero -->
 

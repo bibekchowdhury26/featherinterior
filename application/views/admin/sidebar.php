@@ -123,6 +123,13 @@
             <span>Estimates</span></a>
     </li>
 
+    <!-- Nav Item - Blogs -->
+    <li class="nav-item">
+        <a class="nav-link" href="<?php echo site_url('Admin/blogs') ?>">
+            <i class="fab fa-fw fa-blogger-b"></i>
+            <span>Blogs</span></a>
+    </li>
+
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 

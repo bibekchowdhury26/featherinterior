@@ -12,7 +12,7 @@
             <?php foreach($services as $x): ?>
             <div class="col-6 col-sm-6 col-lg-2 col-md-2 d-flex align-items-stretch" data-aos="fade-up">
                 <div class="icon-box">
-                    <div class="icon"><i class="bx bxl-dribbble"></i></div>
+                    <div class="icon"><img src="<?php echo base_url().$x['icon']; ?>" alt=""></div>
                     <h6><a href=""><?php echo $x['service_name'] ?></a></h6>
                 </div>
             </div>

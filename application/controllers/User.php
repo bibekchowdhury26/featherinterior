@@ -39,6 +39,27 @@ class User extends CI_Controller
         }
     }
 
+    public function get_estimate_request(){
+        // 
+        $config['upload_path']          = './homeplan/';
+        $config['allowed_types']        = 'gif|jpg|png|jpeg';
+
+        $this->load->library('upload', $config);
+
+        if ( ! $this->upload->do_upload('home_plan'))
+        {
+                $error = array('error' => $this->upload->display_errors());
+
+                print_R($error);
+        }
+        else
+        {
+                $data = array('upload_data' => $this->upload->data());
+
+                print_R($data);
+        }
+    }
+
     public function getConsultation(){
         $this->db->insert('consultations',$this->input->post());
         header('location:'.site_url());

@@ -93,11 +93,33 @@ class Admin extends CI_Controller
 				$data['layout'] = $layout;
 				$this->load->view('Admin/Services', $data);
 			} else {
-				$data = array(
-					'service_id' => $this->input->post('service_id'),
-					'service_name' => $this->input->post('service_name'),
-					'service_desc' => $this->input->post('service_desc'),
-				);
+				if ($_FILES['picture']['name']) {
+					$config['upload_path'] = 'UserAssets/img/service/';
+					$config['allowed_types'] = 'gif|jpg|png|svj|tif|tiff|jpeg|bmp|eps|raw|cr2|nef|orf|sr2';
+
+					$this->load->library('upload', $config);
+					if (!$this->upload->do_upload('picture')) {
+						$data = array('error' => $this->upload->display_errors());
+						$data['layout'] = $layout;
+						$this->load->view('Admin/Services', $data);
+					} else {
+						$upload_data = $this->upload->data();
+						$image_path = 'UserAssets/img/service/' . $upload_data['file_name'];
+
+						$data = array(
+							'icon' => $image_path,
+							'service_id' => $this->input->post('service_id'),
+							'service_name' => $this->input->post('service_name'),
+							'service_desc' => $this->input->post('service_desc'),
+						);
+					}
+				} else {
+					$data = array(
+						'service_id' => $this->input->post('service_id'),
+						'service_name' => $this->input->post('service_name'),
+						'service_desc' => $this->input->post('service_desc'),
+					);
+				}
 				// echo '<pre>';
 				// print_R($data);
 				// die;
@@ -132,11 +154,32 @@ class Admin extends CI_Controller
 				$this->load->view('Admin/Services', $data);
 			} else {
 				$id = $this->input->post('id');
-				$data = array(
-					'service_id' => $this->input->post('service_id'),
-					'service_name' => $this->input->post('service_name'),
-					'service_desc' => $this->input->post('service_desc'),
-				);
+				if ($_FILES['picture']['name']) {
+					$config['upload_path'] = 'UserAssets/img/service/';
+					$config['allowed_types'] = 'gif|jpg|png|svj|tif|tiff|jpeg|bmp|eps|raw|cr2|nef|orf|sr2';
+
+					$this->load->library('upload', $config);
+					if (!$this->upload->do_upload('picture')) {
+						$data = array('error' => $this->upload->display_errors());
+						$data['layout'] = $layout;
+						$this->load->view('Admin/Services', $data);
+					} else {
+						$upload_data = $this->upload->data();
+						$image_path = 'UserAssets/img/service/' . $upload_data['file_name'];
+
+						$data = array(
+							'icon' => $image_path,
+							'service_id' => $this->input->post('service_id'),
+							'service_name' => $this->input->post('service_name'),
+						);
+					}
+				} else {
+					$data = array(
+						'service_id' => $this->input->post('service_id'),
+						'service_name' => $this->input->post('service_name'),
+						'service_desc' => $this->input->post('service_desc'),
+					);
+				}
 				// echo '<pre>';
 				// print_R($data);
 				// die;
@@ -159,6 +202,107 @@ class Admin extends CI_Controller
 			$confirm = $this->Services->deleteService($id);
 			if ($confirm) {
 				header('location:' . site_url('Admin/services'));
+			} else {
+				echo '<script>alert("Something went wrong! Try again later.")</script>';;
+			}
+		} else {
+			header('location:' . site_url('Admin'));
+		}
+	}
+	public function blogs()
+	{
+		$layout = 0;
+		// layout = 0 -->view page
+		// layout = 1 -->add page
+		// layout = 2 -->edit page
+		if (isset($_SESSION['admin'])) {
+			$this->load->model('Blogs');
+			$blogs = $this->Blogs->allBlogs();
+			$data['blogs'] = $blogs;
+			$data['layout'] = $layout;
+			$this->load->view('Admin/Blogs', $data);
+		} else {
+			header('location:' . site_url('Admin'));
+		}
+	}
+	public function addBlog()
+	{
+		$layout = 1;
+		// layout = 0 -->view page
+		// layout = 1 -->add page
+		// layout = 2 -->edit page
+		if (isset($_SESSION['admin'])) {
+			if (!$this->input->post()) {
+				$data['layout'] = $layout;
+				$this->load->view('Admin/Blogs', $data);
+			} else {
+				$data = array(
+					'heading' => $this->input->post('heading'),
+					'author_name' => $this->input->post('author_name'),
+					'content' => $this->input->post('content'),
+					'created_on' => $this->input->post('created_on'),
+				);
+				// echo '<pre>';
+				// print_R($data);
+				// die;
+				$this->load->model('Blogs');
+				$confirm = $this->Blogs->addBlog($data);
+				if ($confirm) {
+					header('location:' . site_url('Admin/blogs'));
+				} else {
+					header('location:' . site_url('Admin/addBlogs'));
+				}
+			}
+		} else {
+			header('location:' . site_url('Admin'));
+		}
+	}
+	public function editBlog()
+	{
+		$layout = 2;
+		// layout = 0 -->view page
+		// layout = 1 -->add page
+		// layout = 2 -->edit page
+		if (isset($_SESSION['admin'])) {
+			$this->load->model('Blogs');
+			if (!$this->input->post()) {
+				$id = $this->uri->segment(3);
+				$blog = $this->Blogs->getBlog($id);
+				$data['blog'] = $blog;
+				$data['layout'] = $layout;
+				// echo '<pre>';
+				// print_R($data);
+				// die;
+				$this->load->view('Admin/Blogs', $data);
+			} else {
+				$id = $this->input->post('id');
+				$data = array(
+					'heading' => $this->input->post('heading'),
+					'author_name' => $this->input->post('author_name'),
+					'content' => $this->input->post('content'),
+				);
+				// echo '<pre>';
+				// print_R($data);
+				// die;
+				$confirm = $this->Blogs->updateBlog($id, $data);
+				if ($confirm) {
+					header('location:' . site_url('Admin/blogs'));
+				} else {
+					header('location:' . site_url('Admin/editBlog'));
+				}
+			}
+		} else {
+			header('location:' . site_url('Admin'));
+		}
+	}
+	public function delBlog()
+	{
+		if (isset($_SESSION['admin'])) {
+			$this->load->model('Blogs');
+			$id = $this->uri->segment(3);
+			$confirm = $this->Blogs->deleteBlog($id);
+			if ($confirm) {
+				header('location:' . site_url('Admin/blogs'));
 			} else {
 				echo '<script>alert("Something went wrong! Try again later.")</script>';;
 			}
