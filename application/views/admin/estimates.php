@@ -100,6 +100,7 @@
                                             <th>Name</th>
                                             <th>Email</th>
                                             <th>Phone</th>
+                                            <th>Address</th>
                                             <!-- <th>Edit</th> -->
                                             <!-- <th>Delete</th> -->
                                         </tr>
@@ -112,7 +113,8 @@
                                             <th>Furnitures</th>
                                             <th>Name</th>
                                             <th>Email</th>
-                                            <th>phone</th>
+                                            <th>Phone</th>
+                                            <th>Address</th>
                                             <!-- <th>Edit</th> -->
                                             <!-- <th>Delete</th> -->
                                         </tr>
@@ -125,9 +127,14 @@
                                                                                                         echo $a; ?>
                                             </td>
                                             <td class="text-center"><img width="130" height="120"
-                                                    src="<?php echo base_url() . $x['image'] ?>"></td>
+                                                    src="<?php echo base_url() . $x['home_plan'] ?>"></td>
                                             <td class="text-center" style="vertical-align: middle;">
-                                                <?php echo $x['rooms'] ?></td>
+                                                <?php echo $x['false_ceiling'].' - False Ceiling<br>'; ?>
+                                                <?php echo $x['electric_room'].' - Electric Room<br>'; ?>
+                                                <?php echo $x['modular_kitchen'].' - Modular Kitchen<br>'; ?>
+                                                <?php echo $x['wall_panel'].' - Wall Panel<br>'; ?>
+                                                <?php echo $x['wall_paper'].' - Wall Paper<br>'; ?>
+                                                <?php echo $x['wall_paint'].' - Wall Paint<br>'; ?></td>
                                             <td class="text-center" style="vertical-align: middle;">
                                                 <?php echo $x['furnitures'] ?></td>
                                             <td class="text-center" style="vertical-align: middle;">
@@ -136,6 +143,8 @@
                                                 <?php echo $x['email'] ?></td>
                                             <td class="text-center" style="vertical-align: middle;">
                                                 <?php echo $x['phone'] ?></td>
+                                            <td class="text-center" style="vertical-align: middle;">
+                                                <?php echo $x['address'] ?></td>
                                             <!-- <td class="text-center" style="vertical-align: middle;"><a class="btn btn-primary btn-rounded" href="<?php echo site_url('Admin/editservices/' . $x['id']) ?>"><i class="fas fa-pencil-alt m-r-5"></i></a></td> -->
                                             <!-- <td class="text-center" style="vertical-align: middle;"><a class="btn btn-danger btn-rounded" href="<?php echo site_url('Admin/delservices/' . $x['id']) ?>" onclick="return confirm('Are you sure, you want to delete it?')"><i class="fas fa-trash m-r-5"></i></a></td> -->
                                         </tr>

@@ -421,7 +421,8 @@
                     <div class="col-11 col-sm-9 col-md-10 
                 col-lg-10 col-xl-10 text-center p-0 mb-2">
                         <div class="px-0 pt-4 pb-0 mb-3">
-                            <form id="form">
+                            <form method="post" action="<?php echo site_url('User/get_estimate_request') ?>"
+                                enctype="multipart/form-data" id="gesform">
                                 <ul id="progressbar" class="mx-auto">
                                     <li class="active" id="step1">
                                         <strong>Step 1</strong>
@@ -444,7 +445,7 @@
                                                     Image</button>
                                                 <span id="imageError" class="text-danger"></span>
                                                 <div class="image-upload-wrap">
-                                                    <input class="file-upload-input" name="homeplan" id="homeplan"
+                                                    <input class="file-upload-input" name="home_plan" id="homeplan"
                                                         type='file' onchange="readURL(this);" accept="image/*" />
                                                     <div class="drag-text">
                                                         <h3>Drag and drop a file or select add Image</h3>
@@ -472,8 +473,8 @@
                                                     <label for="" class="text-left col-6">False Ceiling</label>
                                                     <div class="quantity-block">
                                                         <button type="button" class="quantity-arrow-minus"> - </button>
-                                                        <input class="quantity-num quantity-num-1" type="number"
-                                                            value="0" readonly />
+                                                        <input class="quantity-num quantity-num-1" name="false_ceiling"
+                                                            type="number" value="0" readonly />
                                                         <button type="button" class="quantity-arrow-plus"> + </button>
                                                     </div>
                                                 </div>
@@ -481,7 +482,8 @@
                                                     <label for="" class="text-left col-6">Electric Room</label>
                                                     <div class="quantity-block">
                                                         <button type="button" class="quantity-arrow-minus"> - </button>
-                                                        <input class="quantity-num" type="number" value="0" readonly />
+                                                        <input class="quantity-num" name="electric_room" type="number"
+                                                            value="0" readonly />
                                                         <button type="button" class="quantity-arrow-plus"> + </button>
                                                     </div>
                                                 </div>
@@ -489,7 +491,8 @@
                                                     <label for="" class="text-left col-6">Modular Kitchen</label>
                                                     <div class="quantity-block">
                                                         <button type="button" class="quantity-arrow-minus"> - </button>
-                                                        <input class="quantity-num" type="number" value="0" readonly />
+                                                        <input class="quantity-num" name="modular_kitchen" type="number"
+                                                            value="0" readonly />
                                                         <button type="button" class="quantity-arrow-plus"> + </button>
                                                     </div>
                                                 </div>
@@ -497,7 +500,8 @@
                                                     <label for="" class="text-left col-6">Wall Panneling</label>
                                                     <div class="quantity-block">
                                                         <button type="button" class="quantity-arrow-minus"> - </button>
-                                                        <input class="quantity-num" type="number" value="0" readonly />
+                                                        <input class="quantity-num" name="wall_panel" type="number"
+                                                            value="0" readonly />
                                                         <button type="button" class="quantity-arrow-plus"> + </button>
                                                     </div>
                                                 </div>
@@ -505,7 +509,8 @@
                                                     <label for="" class="text-left col-6">Wall Paper</label>
                                                     <div class="quantity-block">
                                                         <button type="button" class="quantity-arrow-minus"> - </button>
-                                                        <input class="quantity-num" type="number" value="0" readonly />
+                                                        <input class="quantity-num" name="wall_paper" type="number"
+                                                            value="0" readonly />
                                                         <button type="button" class="quantity-arrow-plus"> + </button>
                                                     </div>
                                                 </div>
@@ -513,7 +518,8 @@
                                                     <label for="" class="text-left col-6">Wall Paint</label>
                                                     <div class="quantity-block">
                                                         <button type="button" class="quantity-arrow-minus"> - </button>
-                                                        <input class="quantity-num" type="number" value="0" readonly />
+                                                        <input class="quantity-num" name="wall_paint" type="number"
+                                                            value="0" readonly />
                                                         <button type="button" class="quantity-arrow-plus"> + </button>
                                                     </div>
                                                 </div>
@@ -522,98 +528,118 @@
                                                 <h6>Furnitures</h6>
                                                 <div class="p-2 rounded checkbox-form">
                                                     <div class="form-check"> <input class="form-check-input"
-                                                            type="checkbox" value="" id="flexCheckDefault-1"> <label
+                                                            type="checkbox" name="furnitures[]" value="Wardrobe"
+                                                            id="flexCheckDefault-1"> <label
                                                             class=" newsletter form-check-label"
                                                             for="flexCheckDefault-1"> Wardrobe </label> </div>
                                                 </div>
                                                 <div class="p-2 rounded checkbox-form">
                                                     <div class="form-check"> <input class="form-check-input"
-                                                            type="checkbox" value="" id="flexCheckDefault-2"> <label
+                                                            type="checkbox" name="furnitures[]" value="Bed"
+                                                            id="flexCheckDefault-2"> <label
                                                             class=" prospect form-check-label" for="flexCheckDefault-2">
                                                             Bed </label> </div>
                                                 </div>
                                                 <div class="p-2 rounded checkbox-form">
                                                     <div class="form-check"> <input class="form-check-input"
-                                                            type="checkbox" value="" id="flexCheckDefault-3"> <label
+                                                            type="checkbox" name="furnitures[]" value="Study Unit"
+                                                            id="flexCheckDefault-3"> <label
                                                             class=" event form-check-label" for="flexCheckDefault-3">
                                                             Study Unit </label> </div>
                                                 </div>
                                                 <div class="p-2 rounded checkbox-form">
                                                     <div class="form-check"> <input class="form-check-input"
-                                                            type="checkbox" value="" id="flexCheckDefault-4"> <label
+                                                            type="checkbox" name="furnitures[]" value="Dressing Unit"
+                                                            id="flexCheckDefault-4"> <label
                                                             class=" customers form-check-label"
                                                             for="flexCheckDefault-4"> Dressing Unit </label> </div>
                                                 </div>
                                                 <div class="p-2 rounded checkbox-form">
                                                     <div class="form-check"> <input class="form-check-input"
-                                                            type="checkbox" value="" id="flexCheckDefault-4"> <label
+                                                            type="checkbox" name="furnitures[]" value="Side table"
+                                                            id="flexCheckDefault-4"> <label
                                                             class=" customers form-check-label"
                                                             for="flexCheckDefault-4"> Side table </label> </div>
                                                 </div>
                                                 <div class="p-2 rounded checkbox-form">
                                                     <div class="form-check"> <input class="form-check-input"
-                                                            type="checkbox" value="" id="flexCheckDefault-4"> <label
+                                                            type="checkbox" name="furnitures[]" value="Sofa"
+                                                            id="flexCheckDefault-4"> <label
                                                             class=" customers form-check-label"
                                                             for="flexCheckDefault-4"> Sofa </label> </div>
                                                 </div>
                                                 <div class="p-2 rounded checkbox-form">
                                                     <div class="form-check"> <input class="form-check-input"
-                                                            type="checkbox" value="" id="flexCheckDefault-4"> <label
+                                                            type="checkbox" name="furnitures[]" value="Dining Table"
+                                                            id="flexCheckDefault-4"> <label
                                                             class=" customers form-check-label"
                                                             for="flexCheckDefault-4"> Dining Table </label> </div>
                                                 </div>
                                                 <div class="p-2 rounded checkbox-form">
                                                     <div class="form-check"> <input class="form-check-input"
-                                                            type="checkbox" value="" id="flexCheckDefault-4"> <label
+                                                            type="checkbox" name="furnitures[]" value="Chair"
+                                                            id="flexCheckDefault-4"> <label
                                                             class=" customers form-check-label"
                                                             for="flexCheckDefault-4"> Chair </label> </div>
                                                 </div>
-                                                <div class="p-2 rounded checkbox-form">
+                                                <!-- <div class="p-2 rounded checkbox-form">
                                                     <div class="form-check"> <input class="form-check-input"
-                                                            type="checkbox" value="" id="flexCheckDefault-4"> <label
+                                                            type="checkbox" name="furnitures[]" value="Customers" id="flexCheckDefault-4"> <label
                                                             class=" customers form-check-label"
                                                             for="flexCheckDefault-4"> Customers </label> </div>
-                                                </div>
+                                                </div> -->
                                                 <div class="p-2 rounded checkbox-form">
                                                     <div class="form-check"> <input class="form-check-input"
-                                                            type="checkbox" value="" id="flexCheckDefault-4"> <label
+                                                            type="checkbox" name="furnitures[]" value="Center table"
+                                                            id="flexCheckDefault-4"> <label
                                                             class=" customers form-check-label"
                                                             for="flexCheckDefault-4"> Center table </label> </div>
                                                 </div>
                                                 <div class="p-2 rounded checkbox-form">
                                                     <div class="form-check"> <input class="form-check-input"
-                                                            type="checkbox" value="" id="flexCheckDefault-4"> <label
+                                                            type="checkbox" name="furnitures[]" value="TV Unit"
+                                                            id="flexCheckDefault-4"> <label
                                                             class=" customers form-check-label"
                                                             for="flexCheckDefault-4"> TV Unit </label> </div>
                                                 </div>
                                                 <div class="p-2 rounded checkbox-form">
                                                     <div class="form-check"> <input class="form-check-input"
-                                                            type="checkbox" value="" id="flexCheckDefault-4"> <label
+                                                            type="checkbox" name="furnitures[]" value="Crockery Unit"
+                                                            id="flexCheckDefault-4"> <label
                                                             class=" customers form-check-label"
                                                             for="flexCheckDefault-4"> Crockery Unit </label> </div>
                                                 </div>
                                                 <div class="p-2 rounded checkbox-form">
                                                     <div class="form-check"> <input class="form-check-input"
-                                                            type="checkbox" value="" id="flexCheckDefault-4"> <label
+                                                            type="checkbox" name="furnitures[]" value="Bar Unit"
+                                                            id="flexCheckDefault-4"> <label
                                                             class=" customers form-check-label"
                                                             for="flexCheckDefault-4"> Bar Unit </label> </div>
                                                 </div>
                                                 <div class="p-2 rounded checkbox-form">
                                                     <div class="form-check"> <input class="form-check-input"
-                                                            type="checkbox" value="" id="flexCheckDefault-4"> <label
+                                                            type="checkbox" name="furnitures[]" value="Shoe Unit"
+                                                            id="flexCheckDefault-4"> <label
                                                             class=" customers form-check-label"
                                                             for="flexCheckDefault-4"> Shoe Unit </label> </div>
                                                 </div>
                                                 <div class="p-2 rounded checkbox-form">
                                                     <div class="form-check"> <input class="form-check-input"
-                                                            type="checkbox" value="" id="flexCheckDefault-4"> <label
+                                                            type="checkbox" name="furnitures[]"
+                                                            value="Basin Unit / Mirror" id="flexCheckDefault-4"> <label
                                                             class=" customers form-check-label"
                                                             for="flexCheckDefault-4"> Basin Unit / Mirror </label>
                                                     </div>
                                                 </div>
                                                 <div class="p-2 rounded checkbox-form add-list align-items-center">
-                                                    <div class="text-white"> <i class="icofont-plus"></i> <span
-                                                            class=" ml-2">Create your own furniture</span> </div>
+                                                    <div class="text-white custom-furniture"> <i
+                                                            class="icofont-plus"></i> <span
+                                                            class="custom-furniture-text ml-2">Create your custom
+                                                            furniture</span>
+                                                    </div>
+                                                    <textarea style="display:none;" name="custom_furniture" id=""
+                                                        placeholder="Describe your furniture" class="form-control"
+                                                        cols="30"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -642,7 +668,7 @@
                                         </div>
                                     </div>
                                     <input type="button" name="previous-step" class="previous-step" value="Go Back" />
-                                    <input type="button" name="next-step" class="next-step" value="Submit" />
+                                    <input type="button" name="next-step" class="next-step final-step" value="Submit" />
                                 </fieldset>
                                 <fieldset>
                                     <div class="finish row justify-content-center">
@@ -684,6 +710,22 @@
         var opacity;
         var current = 1;
         var steps = $("fieldset").length;
+
+        $('#gesform').click(function() {
+            // e.preventDefault();
+            // var formData = $('#form');
+            var action = $(this).prop('action');
+            // console.log(formData);
+            // console.log(action);
+            $.ajax({
+                type: 'post',
+                url: action,
+                data: new FormData(this),
+                success: function(res) {
+                    console.log(res);
+                }
+            });
+        });
 
         setProgressBar(current);
 
@@ -810,6 +852,10 @@
             removeUpload();
         }
     }
+
+    $('.custom-furniture').click(function() {
+        $(this).hide().siblings().show();
+    });
 
     function removeUpload() {
         $('.file-upload-input').replaceWith($('.file-upload-input').clone());

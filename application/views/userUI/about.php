@@ -4,7 +4,7 @@
 
         <div class="row">
 
-            <div class="col-lg-3" data-aos="fade-up">
+            <div class="col-lg-3">
                 <div class="box box-1">
                     <span>1<sup>st</sup> <i class="icofont-arrow-right"></i></span>
                     <img src="<?php echo base_url();?>UserAssets/img/desktop-2.png" class="step-image" />
@@ -13,7 +13,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-3 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="150">
+            <div class="col-lg-3 mt-4 mt-lg-0">
                 <div class="box box-2">
                     <span>2<sup>nd</sup> <i class="icofont-arrow-right"></i></span>
                     <img src="<?php echo base_url();?>UserAssets/img/man4.png" class="step-image" />
@@ -22,7 +22,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-3 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="300">
+            <div class="col-lg-3 mt-4 mt-lg-0">
                 <div class="box box-3">
                     <span>3<sup>rd</sup> <i class="icofont-arrow-right"></i></span>
                     <img src="<?php echo base_url();?>UserAssets/img/man-last.png" class="step-image-3" />
@@ -31,7 +31,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-3 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="300">
+            <div class="col-lg-3 mt-4 mt-lg-0">
                 <div class="box box-4">
                     <h4>Why wait? Get a free estimation now</h4>
                     <a class="btn btn-gfe mt-2 mx-auto py-auto mb-2 text-white" href="#">Get Free Estimate</a>
@@ -47,11 +47,11 @@
     <div class="container-fluid">
 
         <div class="row">
-            <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left">
+            <div class="col-lg-6 order-1 order-lg-2">
                 <img src="<?php echo base_url() ?>UserAssets/img/about.jpg" class="img-fluid"
                     style="height:75vh; width:100%;" alt="">
             </div>
-            <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right">
+            <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
                 <h3>Why Us</h3>
                 <ul>
                     <li class=""><i class="icofont-ui-calendar"></i><br> 40 Days On-time delivery</li>

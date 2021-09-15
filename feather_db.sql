@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 15, 2021 at 09:48 AM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 7.3.27
+-- Generation Time: Sep 08, 2021 at 02:36 AM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 8.0.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -39,6 +39,20 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`id`, `username`, `password`) VALUES
 (1, 'admin', 'admin');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `blogs`
+--
+
+CREATE TABLE `blogs` (
+  `id` int(11) NOT NULL,
+  `heading` varchar(255) NOT NULL,
+  `author_name` varchar(150) NOT NULL,
+  `content` text NOT NULL,
+  `created_on` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -137,20 +151,26 @@ INSERT INTO `customer_bills` (`id`, `invoice`, `customer`, `email`, `address`, `
 
 CREATE TABLE `estimates` (
   `id` int(11) NOT NULL,
-  `image` varchar(255) NOT NULL,
-  `rooms` varchar(255) NOT NULL,
-  `furnitures` varchar(255) NOT NULL,
+  `home_plan` varchar(500) NOT NULL,
+  `furnitures` varchar(1000) NOT NULL,
   `name` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `phone` varchar(100) NOT NULL
+  `phone` varchar(100) NOT NULL,
+  `address` longtext NOT NULL,
+  `false_ceiling` int(10) NOT NULL,
+  `electric_room` int(10) NOT NULL,
+  `modular_kitchen` int(10) NOT NULL,
+  `wall_panel` int(10) NOT NULL,
+  `wall_paper` int(10) NOT NULL,
+  `wall_paint` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `estimates`
 --
 
-INSERT INTO `estimates` (`id`, `image`, `rooms`, `furnitures`, `name`, `email`, `phone`) VALUES
-(1, 'UserAssets/img/team/final.png', 'ggxgvsxg', 'xsgxcvysfv', 'xgvxtsvxyswgv', 'sxhvsxysgvxysxg', 'sxgvgsvxcsgvx');
+INSERT INTO `estimates` (`id`, `home_plan`, `furnitures`, `name`, `email`, `phone`, `address`, `false_ceiling`, `electric_room`, `modular_kitchen`, `wall_panel`, `wall_paper`, `wall_paint`) VALUES
+(1, 'UserAssets/img/team/final.png', 'xsgxcvysfv', 'xgvxtsvxyswgv', 'sxhvsxysgvxysxg', 'sxgvgsvxcsgvx', '', 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -186,7 +206,8 @@ CREATE TABLE `gallery_category` (
 INSERT INTO `gallery_category` (`id`, `category_id`, `parent_category_id`, `category_name`, `category_description`) VALUES
 (6, 'CAT61187eaf60fe3', NULL, 'Home Office', 'Home Office Designs'),
 (7, 'CAT61187ed53b4d0', NULL, 'Wardrobe Design', 'Wardrobe Designs to view'),
-(8, 'CAT61187eec305ec', NULL, 'Modular Kitchen', 'Modular Kitchen Designs');
+(8, 'CAT61187eec305ec', NULL, 'Modular Kitchen', 'Modular Kitchen Designs'),
+(9, 'CAT6120ad7e5c121', NULL, 'Electric Room', 'skajdfhkasdlfkj;dslfglsdmgf');
 
 -- --------------------------------------------------------
 
@@ -226,7 +247,11 @@ INSERT INTO `gallery_images` (`id`, `image_id`, `category_id`, `image_file_name`
 (23, 'IMG61187faf3bd14', 'CAT61187eec305ec', 'images/kitchen3.jpg', 'Modular Kitchen Design Catalog'),
 (24, 'IMG61187faf3c650', 'CAT61187eec305ec', 'images/kitchen4.jpg', 'Modular Kitchen Design Catalog'),
 (25, 'IMG61187faf3d00c', 'CAT61187eec305ec', 'images/kitchen5.jpg', 'Modular Kitchen Design Catalog'),
-(26, 'IMG61187faf3d811', 'CAT61187eec305ec', 'images/kitchen6.jpg', 'Modular Kitchen Design Catalog');
+(26, 'IMG61187faf3d811', 'CAT61187eec305ec', 'images/kitchen6.jpg', 'Modular Kitchen Design Catalog'),
+(27, 'IMG6120adce4ea43', 'CAT6120ad7e5c121', 'images/tata.png', 'kajsdhkjhasljsdljg;lmdsf.g,'),
+(28, 'IMG6120adce59acf', 'CAT6120ad7e5c121', 'images/maserati.png', 'kajsdhkjhasljsdljg;lmdsf.g,'),
+(29, 'IMG6120adce5b400', 'CAT6120ad7e5c121', 'images/lincoln.png', 'kajsdhkjhasljsdljg;lmdsf.g,'),
+(30, 'IMG6120adce5c8a3', 'CAT6120ad7e5c121', 'images/audi.png', 'kajsdhkjhasljsdljg;lmdsf.g,');
 
 -- --------------------------------------------------------
 
@@ -236,6 +261,7 @@ INSERT INTO `gallery_images` (`id`, `image_id`, `category_id`, `image_file_name`
 
 CREATE TABLE `services` (
   `id` int(11) NOT NULL,
+  `icon` varchar(255) NOT NULL,
   `service_id` varchar(255) NOT NULL,
   `service_name` varchar(255) NOT NULL,
   `service_desc` mediumtext NOT NULL
@@ -245,13 +271,13 @@ CREATE TABLE `services` (
 -- Dumping data for table `services`
 --
 
-INSERT INTO `services` (`id`, `service_id`, `service_name`, `service_desc`) VALUES
-(3, 'SRV611876642de5b', 'Modular Kitchen', 'something'),
-(4, 'SRV61187677cebbc', 'False Ceiling', 'something'),
-(5, 'SRV61187690e83b3', 'Electric Room', 'something'),
-(6, 'SRV6118769e19ac6', 'Wall Panneling', 'something'),
-(7, 'SRV611876ae1ca93', 'Wall Paper', 'something'),
-(8, 'SRV611876d49b106', 'Wall Paint', 'something');
+INSERT INTO `services` (`id`, `icon`, `service_id`, `service_name`, `service_desc`) VALUES
+(3, '', 'SRV611876642de5b', 'Modular Kitchen', 'something'),
+(4, '', 'SRV61187677cebbc', 'False Ceiling', 'something'),
+(5, '', 'SRV61187690e83b3', 'Electric Room', 'something'),
+(6, '', 'SRV6118769e19ac6', 'Wall Panneling', 'something'),
+(7, '', 'SRV611876ae1ca93', 'Wall Paper', 'something'),
+(8, '', 'SRV611876d49b106', 'Wall Paint', 'something');
 
 -- --------------------------------------------------------
 
@@ -367,6 +393,12 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `blogs`
+--
+ALTER TABLE `blogs`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `consultations`
 --
 ALTER TABLE `consultations`
@@ -450,6 +482,12 @@ ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `blogs`
+--
+ALTER TABLE `blogs`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `consultations`
 --
 ALTER TABLE `consultations`
@@ -483,19 +521,19 @@ ALTER TABLE `furniture`
 -- AUTO_INCREMENT for table `gallery_category`
 --
 ALTER TABLE `gallery_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `gallery_images`
 --
 ALTER TABLE `gallery_images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `teams`
@@ -519,7 +557,7 @@ ALTER TABLE `user_registration`
 -- AUTO_INCREMENT for table `vendors`
 --
 ALTER TABLE `vendors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

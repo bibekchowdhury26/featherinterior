@@ -78,148 +78,166 @@
                 <div class="container-fluid">
 
                     <?php if ($layout == 0) : ?>
-                    <!-- View Page-->
-                    <div class="row" style="margin-bottom: 10px;">
-                        <div class="col-sm-4 col-3">
-                            <h4 class="h3 mb-2 text-gray-800">Services</h4>
-                        </div>
-                        <div class="col-sm-8 col-9 text-right m-b-20">
-                            <a href="<?php echo site_url('Admin/addservices') ?>"
-                                class="btn btn btn-primary btn-rounded float-right"><i class="fa fa-plus"></i> Add
-                                Services</a>
-                        </div>
-                    </div>
-                    <div class="card shadow mb-4">
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Service ID</th>
-                                            <th>Service Name</th>
-                                            <th>Description</th>
-                                            <th>Edit</th>
-                                            <th>Delete</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Service ID</th>
-                                            <th>Service Name</th>
-                                            <th>Description</th>
-                                            <th>Edit</th>
-                                            <th>Delete</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <?php foreach ($services as $x) : ?>
-                                        <tr>
-                                            <td class="text-center" style="vertical-align: middle;">
-                                                <?php echo $x['service_id'] ?></td>
-                                            <td class="text-center" style="vertical-align: middle;">
-                                                <?php echo $x['service_name'] ?></td>
-                                            <td><?php echo $x['service_desc'] ?></td>
-                                            <td class="text-center" style="vertical-align: middle;"><a
-                                                    class="btn btn-primary btn-rounded"
-                                                    href="<?php echo site_url('Admin/editservices/' . $x['id']) ?>"><i
-                                                        class="fas fa-pencil-alt m-r-5"></i></a></td>
-                                            <td class="text-center" style="vertical-align: middle;"><a
-                                                    class="btn btn-danger btn-rounded"
-                                                    href="<?php echo site_url('Admin/delservices/' . $x['id']) ?>"
-                                                    onclick="return confirm('Are you sure, you want to delete it?')"><i
-                                                        class="fas fa-trash m-r-5"></i></a></td>
-                                        </tr>
-                                        <?php endforeach; ?>
-                                    </tbody>
-                                </table>
+                        <!-- View Page-->
+                        <div class="row" style="margin-bottom: 10px;">
+                            <div class="col-sm-4 col-3">
+                                <h4 class="h3 mb-2 text-gray-800">Services</h4>
+                            </div>
+                            <div class="col-sm-8 col-9 text-right m-b-20">
+                                <a href="<?php echo site_url('Admin/addservices') ?>" class="btn btn btn-primary btn-rounded float-right"><i class="fa fa-plus"></i> Add
+                                    Services</a>
                             </div>
                         </div>
-                    </div>
+                        <div class="card shadow mb-4">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Service ID</th>
+                                                <th>Icon</th>
+                                                <th>Service Name</th>
+                                                <th>Description</th>
+                                                <th>Edit</th>
+                                                <th>Delete</th>
+                                            </tr>
+                                        </thead>
+                                        <tfoot>
+                                            <tr>
+                                                <th>Service ID</th>
+                                                <th>Icon</th>
+                                                <th>Service Name</th>
+                                                <th>Description</th>
+                                                <th>Edit</th>
+                                                <th>Delete</th>
+                                            </tr>
+                                        </tfoot>
+                                        <tbody>
+                                            <?php foreach ($services as $x) : ?>
+                                                <tr>
+                                                    <td class="text-center" style="vertical-align: middle;"><?php echo $x['service_id'] ?></td>
+                                                    <td class="text-center"><img width="130" height="120" src="<?php echo base_url() . $x['icon'] ?>"></td>
+                                                    <td class="text-center" style="vertical-align: middle;"><?php echo $x['service_name'] ?></td>
+                                                    <td><?php echo $x['service_desc'] ?></td>
+                                                    <td class="text-center" style="vertical-align: middle;"><a class="btn btn-primary btn-rounded" href="<?php echo site_url('Admin/editservices/' . $x['id']) ?>"><i class="fas fa-pencil-alt m-r-5"></i></a></td>
+                                                    <td class="text-center" style="vertical-align: middle;"><a class="btn btn-danger btn-rounded" href="<?php echo site_url('Admin/delservices/' . $x['id']) ?>" onclick="return confirm('Are you sure, you want to delete it?')"><i class="fas fa-trash m-r-5"></i></a></td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     <?php elseif ($layout == 1) : ?>
-                    <!-- Add Page-->
-                    <div class="row">
-                        <div class="col-lg-8 offset-lg-2 pt-5">
-                            <h4 class="page-title">Add Service</h4>
+                        <!-- Add Page-->
+                        <div class="row">
+                            <div class="col-lg-8 offset-lg-2 pt-5">
+                                <h4 class="page-title">Add Service</h4>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-8 offset-lg-2 pt-3">
-                            <form method="post" action="<?php echo site_url('Admin/addservices') ?>">
-                                <div class="row">
-                                    <div class="col-md-6 pt-2">
-                                        <div class="form-group">
-                                            <label>Service ID</label>
-                                            <input class="form-control" type="text" name="service_id"
-                                                value="<?php echo uniqid('SRV'); ?>" readonly>
+                        <div class="row">
+                            <div class="col-lg-8 offset-lg-2 pt-3">
+                                <form method="post" action="<?php echo site_url('Admin/addservices') ?>" enctype="multipart/form-data">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label>Icon:</label>
+                                                <div class="profile-upload">
+                                                    <div class="upload-img">
+                                                        <img alt="" id="prevpic" style="height: 155px; width: 125px; margin-bottom: 5px ">
+                                                    </div>
+                                                    <div class="upload-input">
+                                                        <input type="file" class="form-control col-sm-6" id="propic" name="picture">
+                                                        <span class="text-danger"><?php if (isset($error)) {
+                                                                                        echo $error;
+                                                                                    } ?></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 pt-2">
+                                            <div class="form-group">
+                                                <label>Service ID</label>
+                                                <input class="form-control" type="text" name="service_id" value="<?php echo uniqid('SRV'); ?>" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 pt-2">
+                                            <div class="form-group">
+                                                <label>Name: <span class="text-danger">*</span></label>
+                                                <input class="form-control" name="service_name" style="text-transform: uppercase;" type="text" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label>Description: <span class="text-danger">*</span></label>
+                                                <textarea name="service_desc" class="form-control" rows="4" required></textarea>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6 pt-2">
-                                        <div class="form-group">
-                                            <label>Name: <span class="text-danger">*</span></label>
-                                            <input class="form-control" name="service_name"
-                                                style="text-transform: uppercase;" type="text" required>
-                                        </div>
+                                    <div class="m-t-20 text-center">
+                                        <button type="submit" class="btn btn-primary submit-btn">Add Service</button>
                                     </div>
-                                    <div class="col-sm-12">
-                                        <div class="form-group">
-                                            <label>Description: <span class="text-danger">*</span></label>
-                                            <textarea name="service_desc" class="form-control" rows="4"
-                                                required></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="m-t-20 text-center">
-                                    <button type="submit" class="btn btn-primary submit-btn">Add Service</button>
-                                </div>
-                            </form>
+                                </form>
+                            </div>
                         </div>
-                    </div>
                     <?php elseif ($layout == 2) : ?>
-                    <!-- Edit Page-->
-                    <div class="row">
-                        <div class="col-lg-8 offset-lg-2 pt-5">
-                            <h4 class="page-title">Edit Service</h4>
+                        <!-- Edit Page-->
+                        <div class="row">
+                            <div class="col-lg-8 offset-lg-2 pt-5">
+                                <h4 class="page-title">Edit Service</h4>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-8 offset-lg-2 pt-3">
-                            <form method="post" action="<?php echo site_url('Admin/editservices') ?>">
-                                <div class="row">
-                                    <div class="col-md-6 pt-2">
-                                        <div class="form-group">
-                                            <label>Service ID</label>
-                                            <input class="form-control" type="text" name="service_id"
-                                                value="<?php echo $service[0]['service_id']; ?>" readonly>
+                        <div class="row">
+                            <div class="col-lg-8 offset-lg-2 pt-3">
+                                <form method="post" action="<?php echo site_url('Admin/editservices') ?>" enctype="multipart/form-data">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label>Vendor's Logo:</label>
+                                                <div class="profile-upload">
+                                                    <div class="upload-img">
+                                                        <img id="prevpic" style="height: 155px; width: 125px; margin-bottom: 5px " src="<?php echo base_url() . $service[0]['icon'] ?>">
+                                                    </div>
+                                                    <div class="upload-input">
+                                                        <input type="file" class="form-control" id="propic" name="picture">
+                                                        <span class="text-danger"><?php if (isset($error)) {
+                                                                                        echo $error;
+                                                                                    } ?></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 pt-2">
+                                            <div class="form-group">
+                                                <label>Service ID</label>
+                                                <input class="form-control" type="text" name="service_id" value="<?php echo $service[0]['service_id']; ?>" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 pt-2">
+                                            <div class="form-group">
+                                                <label>Name: <span class="text-danger">*</span></label>
+                                                <input class="form-control" name="service_name" type="text" value="<?php echo $service[0]['service_name']; ?>" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label>Description: <span class="text-danger">*</span></label>
+                                                <textarea name="service_desc" class="form-control" rows="4" required><?php echo $service[0]['service_desc']; ?></textarea>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6 pt-2">
+                                    <div class="col-sm-6 pt-2" style="display: none;">
                                         <div class="form-group">
-                                            <label>Name: <span class="text-danger">*</span></label>
-                                            <input class="form-control" name="service_name" type="text"
-                                                value="<?php echo $service[0]['service_name']; ?>" required>
+                                            <label>ID: <span class="text-danger"></span></label>
+                                            <input class="form-control" name="id" type="text" value="<?php echo $service[0]['id']; ?>" readonly>
                                         </div>
                                     </div>
-                                    <div class="col-sm-12">
-                                        <div class="form-group">
-                                            <label>Description: <span class="text-danger">*</span></label>
-                                            <textarea name="service_desc" class="form-control" rows="4"
-                                                required><?php echo $service[0]['service_desc']; ?></textarea>
-                                        </div>
+                                    <div class="m-t-20 text-center">
+                                        <button type="submit" class="btn btn-primary submit-btn">Update Service</button>
                                     </div>
-                                </div>
-                                <div class="col-sm-6 pt-2" style="display: none;">
-                                    <div class="form-group">
-                                        <label>ID: <span class="text-danger"></span></label>
-                                        <input class="form-control" name="id" type="text"
-                                            value="<?php echo $service[0]['id']; ?>" readonly>
-                                    </div>
-                                </div>
-                                <div class="m-t-20 text-center">
-                                    <button type="submit" class="btn btn-primary submit-btn">Update Service</button>
-                                </div>
-                            </form>
+                                </form>
+                            </div>
                         </div>
-                    </div>
                     <?php endif; ?>
 
 
@@ -259,7 +277,23 @@
 
     <!-- Page level custom scripts -->
     <script src="<?php echo base_url() ?>js/demo/datatables-demo.js"></script>
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
 
+                reader.onload = function(e) {
+                    $('#prevpic').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#propic").change(function() {
+            readURL(this);
+        });
+    </script>
 </body>
 
 </html>
